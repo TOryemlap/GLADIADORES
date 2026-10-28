@@ -1,0 +1,60 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main()
+        {
+            int Vida_2 = 18;
+            int Ataque1 = 15;
+            int defen2 = 5;
+            int Vida_2antes = Vida_2;
+            Vida_2 = Opciones(Vida_2, Ataque1, defen2);
+            Vida_2antes = Vida_2antes - Vida_2;
+            Console.WriteLine("le queda " + Vida_2 + " puntos de vida al jugador 2 y al atacante se le suman " + Vida_2antes + "");
+            
+        }
+        static int Opciones(int Vida_2, int Ataque1, int defen2)
+        {
+            Console.WriteLine("¿Que acción realiza?");
+            int Accion = int.Parse(Console.ReadLine());
+            switch (Accion)
+            {
+                //SE ELIGE ATAQUE
+                case 1:
+                    if(Vida_2 > 0)
+                    {
+                        Ataque1 = Ataque1 - defen2;
+                        if(Ataque1 < 1)
+                        {
+                            Ataque1 = 1;
+                        }
+                        if (Ataque1 > Vida_2)
+                        {
+                            Vida_2 = 0;
+                            Ataque1 = Vida_2;
+                        }
+                        else
+                        {
+                            Vida_2 = Vida_2- Ataque1;
+                        }
+                    }
+                   
+                    return Vida_2;
+
+
+                    break;
+                //SE ELIGE RECUPERAR VIDA
+                case 2:
+
+                    break;
+            }
+            return Vida_2;
+        }
+    }
+}
