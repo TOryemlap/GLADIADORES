@@ -1,0 +1,22 @@
+    static int Ataque_ju1(int Vida_2, int Ataque1, int defen2)
+        {
+            if (Vida_2 > 0)
+            {
+                Ataque1 = Ataque1 - defen2;
+                if (Ataque1 < 1)
+                {
+                    Ataque1 = 1;
+                }
+                if (Ataque1 > Vida_2)
+                {
+                    Vida_2 = 0;
+                    Ataque1 = Vida_2;
+                }
+                else
+                {
+                    Vida_2 = Vida_2 - Ataque1;
+                }
+            }
+
+            return Vida_2;
+        }
