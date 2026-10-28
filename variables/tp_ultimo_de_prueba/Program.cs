@@ -10,6 +10,7 @@ namespace tp_ultimo_de_prueba
     {
         static void Main(string[] args)
         {
+            int Total_daño1 = 0; //contador del daño causado en todo el juego
             int Modalidad = 0; // si es 1 vs 1 o 2vs2 o 3vs3 o 5vs5 
             int Op_Elegida = 0;// la opcion de la modalidad
             int Nom_Equi1 = 0; // nombre del equipo numero 1
@@ -22,6 +23,7 @@ namespace tp_ultimo_de_prueba
             int Gladiador3_Equi1 = 0;
             int Gladiador4_Equi1 = 0;
             int Gladiador5_Equi1 = 0;
+            int Total_daño2 = 0; //contador del daño causado en todo el juego
             int Nom_Equi2 = 0; // nombre del equipo numero 2
             int Nom_Juga2 = 0; // nombre de jugador numero 2
             int Vida_2 = 0; // vida del jugador 2
