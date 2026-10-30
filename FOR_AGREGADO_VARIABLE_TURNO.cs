@@ -8,6 +8,13 @@ namespace ConsoleApplication3
 {
     class Program
     {
+        static int ModalidadFun()
+        {
+            Console.WriteLine("Que modalidad Elige: | 1. 1v1 | 2. 2v2 | 3. 3v3 | 5. 5v5 |");
+            int Modalidad = int.Parse(Console.ReadLine());
+            return Modalidad;
+
+        }
         static int RecuperarVida(int VidaGladiador1, int VidaGladiador2, int VidaMaxima, int turno)
         {
             Console.WriteLine("Seleccionó RECUPERAR VIDA.");
@@ -27,16 +34,16 @@ namespace ConsoleApplication3
             }
             else
                 if (VidaMaxima - VidaGladiador1 >= 5)
-                {
-                    int VidaCurada = VidaGladiador1 + 5;
-                    return VidaCurada;
-                }
-                else
-                {
+            {
+                int VidaCurada = VidaGladiador1 + 5;
+                return VidaCurada;
+            }
+            else
+            {
                 int Curacion = VidaMaxima - VidaGladiador1;
                 int VidaCurada = VidaGladiador1 + Curacion;
                 return VidaCurada;
-                }
+            }
         }
         static int Ataque_ju1(int VidaGladiador2, int VidaGladiador1, int Ataque1, int Ataque2, int defen2, int defen1, int turno)
         {
@@ -80,10 +87,95 @@ namespace ConsoleApplication3
                     }
                 }
             }
-                return VidaGladiador2;
+            return VidaGladiador2;
         }
         static void Main(string[] args)
         {
+            string NombreGladiador1_Eq1 = "";
+            string NombreGladiador2_Eq1 = "";
+            string NombreGladiador3_Eq1 = "";
+            string NombreGladiador4_Eq1 = "";
+            string NombreGladiador5_Eq1 = "";
+            string NombreGladiador1_Eq2 = "";
+            string NombreGladiador2_Eq2 = "";
+            string NombreGladiador3_Eq2 = "";
+            string NombreGladiador4_Eq2 = "";
+            string NombreGladiador5_Eq2 = "";
+            int Modalidad = ModalidadFun();
+            Console.WriteLine("Crea el equipo el jugador 1.");
+            Console.Write("Introduzca el nombre de su equipo: ");
+            String NombreEquipo1 = Console.ReadLine();
+            if (Modalidad == 5)
+            {
+                Console.Write("Introduzca el nombre del Gladiador 1: ");
+                NombreGladiador1_Eq1 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 2: ");
+                NombreGladiador2_Eq1 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 3: ");
+                NombreGladiador3_Eq1 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 4: ");
+                NombreGladiador4_Eq1 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 5: ");
+                NombreGladiador5_Eq1 = Console.ReadLine();
+            }
+            else if (Modalidad == 3)
+            {
+                Console.Write("Introduzca el nombre del Gladiador 1: ");
+                NombreGladiador1_Eq1 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 2: ");
+                NombreGladiador2_Eq1 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 3: ");
+                NombreGladiador3_Eq1 = Console.ReadLine();
+            }
+            else if (Modalidad == 2)
+            {
+                Console.Write("Introduzca el nombre del Gladiador 1: ");
+                NombreGladiador1_Eq1 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 2: ");
+                NombreGladiador2_Eq1 = Console.ReadLine();
+            }
+            else if (Modalidad == 1)
+            {
+                Console.Write("Introduzca el nombre del Gladiador 1: ");
+                NombreGladiador1_Eq1 = Console.ReadLine();
+            }
+            Console.WriteLine("Crea el equipo el jugador 2.");
+            Console.Write("Introduzca el nombre de su equipo: ");
+            String NombreEquipo2 = Console.ReadLine();
+            if (Modalidad == 5)
+            {
+                Console.Write("Introduzca el nombre del Gladiador 1: ");
+                NombreGladiador1_Eq2 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 2: ");
+                NombreGladiador2_Eq2 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 3: ");
+                NombreGladiador3_Eq2 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 4: ");
+                NombreGladiador4_Eq2 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 5: ");
+                NombreGladiador5_Eq2 = Console.ReadLine();
+            }
+            else if (Modalidad == 3)
+            {
+                Console.Write("Introduzca el nombre del Gladiador 1: ");
+                NombreGladiador1_Eq2 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 2: ");
+                NombreGladiador2_Eq2 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 3: ");
+                NombreGladiador3_Eq2 = Console.ReadLine();
+            }
+            else if (Modalidad == 2)
+            {
+                Console.Write("Introduzca el nombre del Gladiador 1: ");
+                NombreGladiador1_Eq2 = Console.ReadLine();
+                Console.Write("Introduzca el nombre del Gladiador 2: ");
+                NombreGladiador2_Eq2 = Console.ReadLine();
+            }
+            else if (Modalidad == 1)
+            {
+                Console.Write("Introduzca el nombre del Gladiador 1: ");
+                NombreGladiador1_Eq2 = Console.ReadLine();
+            }
             int VidaGladiador1 = 15;
             int VidaGladiador2 = 18;
             int VidaMaxima = 25;
@@ -97,13 +189,13 @@ namespace ConsoleApplication3
                 if (turno % 2 == 0)
                 {
                     Console.WriteLine("====================TURNO " + turno + "====================");
-                    Console.WriteLine("Turno del Gladiador2."); //Cambiar por el nombre del jugador cuando se haga la funcion.
+                    Console.WriteLine("Turno de " + NombreGladiador1_Eq1);
                     Console.WriteLine("HP = " + VidaGladiador2);
                 }
                 else
                 {
                     Console.WriteLine("====================TURNO " + turno + "====================");
-                    Console.WriteLine("Turno del Gladiador1.");
+                    Console.WriteLine("Turno de " + NombreGladiador1_Eq2);
                     Console.WriteLine();
                     Console.WriteLine("HP = " + VidaGladiador1);
                 }
