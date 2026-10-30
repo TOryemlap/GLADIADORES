@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -84,8 +84,15 @@ namespace ConsoleApplication3
         }
         static void Main(string[] args)
         {
+            int VidaGladiador1 = 15;
+            int VidaGladiador2 = 18;
+            int VidaMaxima = 25;
+            int Ataque1 = 15;
+            int Ataque2 = 15;
+            int defen1 = 5;
+            int defen2 = 5;
             int turno = 1;
-            for (int i = 1; i <= turno; i++)
+            while (VidaGladiador1 > 0 || VidaGladiador2 > 0)
             {
                 if (turno % 2 == 0)
                 {
@@ -97,13 +104,6 @@ namespace ConsoleApplication3
                 }
                 Console.WriteLine("¿Que acción realiza? 1. Ataque 2. Recuperar vida");
                 int Accion = int.Parse(Console.ReadLine());
-                int VidaGladiador1 = 15;
-                int VidaGladiador2 = 18;
-                int VidaMaxima = 25;
-                int Ataque1 = 15;
-                int Ataque2 = 15;
-                int defen1 = 5;
-                int defen2 = 5;
                 switch (Accion)
                 {
                     //SE ELIGE ATAQUE
@@ -130,4 +130,3 @@ namespace ConsoleApplication3
         }
     }
 }
-
