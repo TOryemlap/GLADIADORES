@@ -96,11 +96,16 @@ namespace ConsoleApplication3
             {
                 if (turno % 2 == 0)
                 {
+                    Console.WriteLine("====================TURNO " + turno + "====================");
                     Console.WriteLine("Turno del Gladiador2."); //Cambiar por el nombre del jugador cuando se haga la funcion.
+                    Console.WriteLine("HP = " + VidaGladiador2);
                 }
                 else
                 {
+                    Console.WriteLine("====================TURNO " + turno + "====================");
                     Console.WriteLine("Turno del Gladiador1.");
+                    Console.WriteLine();
+                    Console.WriteLine("HP = " + VidaGladiador1);
                 }
                 Console.WriteLine("¿Que acción realiza? 1. Ataque 2. Recuperar vida");
                 int Accion = int.Parse(Console.ReadLine());
@@ -109,9 +114,28 @@ namespace ConsoleApplication3
                     //SE ELIGE ATAQUE
                     case 1:
                         Console.WriteLine("Seleccionó ATAQUE.");
-                        VidaGladiador2 = Ataque_ju1(Ataque1, Ataque2, VidaGladiador2, VidaGladiador1, defen1, defen2, turno);
-
-
+                        if (turno % 2 == 0)
+                        {
+                            int Vida_1antes = VidaGladiador1;
+                            VidaGladiador1 = Ataque_ju1(Ataque1, Ataque2, VidaGladiador2, VidaGladiador1, defen1, defen2, turno);
+                            int Puntos = Vida_1antes - VidaGladiador1;
+                            Console.WriteLine("Ataca el Gladiador2...");
+                            Console.WriteLine();
+                            Console.WriteLine("Gladiador1 queda con " + VidaGladiador1 + " puntos de vida.");
+                            Console.WriteLine("Gladiador2 suma " + Puntos + " puntos.");
+                            Console.WriteLine();
+                        }
+                        else
+                        {
+                            int Vida_2antes = VidaGladiador2;
+                            VidaGladiador2 = Ataque_ju1(Ataque1, Ataque2, VidaGladiador2, VidaGladiador1, defen1, defen2, turno);
+                            int Puntos = Vida_2antes - VidaGladiador2;
+                            Console.WriteLine("Ataca el Gladiador1...");
+                            Console.WriteLine();
+                            Console.WriteLine("Gladiador2 queda con " + VidaGladiador2 + " puntos de vida.");
+                            Console.WriteLine("Gladiador1 suma " + Puntos + " puntos.");
+                            Console.WriteLine();
+                        }
                         break;
 
                     //SE ELIGE RECUPERAR VIDA
@@ -126,6 +150,7 @@ namespace ConsoleApplication3
                         Console.WriteLine("Opción no válida. Intente de nuevo.");
                         break;
                 }
+                turno++;
             }
         }
     }
