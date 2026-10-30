@@ -15,8 +15,8 @@ namespace ConsoleApplication1
             int defen2 = 5;
             int Vida_2antes = Vida_2;
             Vida_2 = Ataque_ju1(Vida_2, Ataque1, defen2);
-            Vida_2antes = Vida_2antes - Vida_2;
-            Console.WriteLine("le queda " + Vida_2 + " puntos de vida al jugador 2 y al atacante se le suma " + Vida_2antes + " puntos");
+            int Puntos = Vida_2antes - Vida_2;
+            Console.WriteLine("le queda " + Vida_2 + " puntos de vida al jugador 2 y al atacante se le suma " + Puntos + " puntos");
 
         }
         static int Ataque_ju1(int Vida_2, int Ataque1, int defen2)
