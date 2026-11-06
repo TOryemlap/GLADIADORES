@@ -58,14 +58,15 @@ namespace ConsoleApplication3
                     }
                     if (Ataque1 > VidaGladiador2)
                     {
-                        VidaGladiador2 = 0;
                         Ataque1 = VidaGladiador2;
+                        VidaGladiador2 = 0;
                     }
                     else
                     {
                         VidaGladiador2 = VidaGladiador2 - Ataque1;
                     }
                 }
+                return VidaGladiador2;
             }
             else
             {
@@ -78,16 +79,16 @@ namespace ConsoleApplication3
                     }
                     if (Ataque2 > VidaGladiador1)
                     {
-                        VidaGladiador1 = 0;
                         Ataque2 = VidaGladiador1;
+                        VidaGladiador1 = 0;
                     }
                     else
                     {
                         VidaGladiador1 = VidaGladiador1 - Ataque2;
                     }
                 }
+                return VidaGladiador1;
             }
-            return VidaGladiador2;
         }
         static void Main(string[] args)
         {
@@ -178,12 +179,15 @@ namespace ConsoleApplication3
             }
             int VidaGladiador1 = 15;
             int VidaGladiador2 = 18;
-            int VidaMaxima = 25;
+            int VidaMaxima = 25; //variable auxiliar
+            int VidaEquipo1 = VidaGladiador1; //sumar las vidas de todos los gladiadores
+            int VidaEquipo2 = VidaGladiador2;
             int Ataque1 = 15;
             int Ataque2 = 15;
             int defen1 = 5;
             int defen2 = 5;
             int turno = 1;
+            int contadorRecuperar = 0;
             while (VidaGladiador1 > 0 || VidaGladiador2 > 0)
             {
                 if (turno % 2 == 0)
@@ -233,9 +237,18 @@ namespace ConsoleApplication3
                     //SE ELIGE RECUPERAR VIDA
                     case 2:
                         {
-                            int VidaCurada = RecuperarVida(VidaGladiador1, VidaGladiador2, VidaMaxima, turno);
-                            Console.WriteLine("La vida del gladiador ahora es de " + VidaCurada + " puntos de vida.");
-                            break;
+                            if (contadorRecuperar <= 2)
+                            {
+                                contadorRecuperar++;
+                                int VidaCurada = RecuperarVida(VidaGladiador1, VidaGladiador2, VidaMaxima, turno);
+                                Console.WriteLine("La vida del gladiador ahora es de " + VidaCurada + " puntos de vida.");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Un gladiador no puede recuperar vida más de dos veces por combate.");
+                                break;
+                            }
                         }
 
                     default:
@@ -243,6 +256,14 @@ namespace ConsoleApplication3
                         break;
                 }
                 turno++;
+            }
+            if (VidaEquipo1 > 0)
+            {
+                Console.WriteLine("El combate ha acabado... Ganan " + NombreEquipo1);
+            }
+            else
+            {
+                Console.WriteLine("El combate ha acabado... Ganan " + NombreEquipo2);
             }
         }
     }
