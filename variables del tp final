@@ -14,6 +14,7 @@ namespace tp_ultimo_de_prueba
             //
             //variables del equipo 1 
             //
+            int PV_equipo1_Total=0;//la suma total de la vida del equipo 1
             int Nom_Equi1 = 0; // nombre del equipo numero 1
             //
             //gladiador 1 equipo 1 
@@ -59,6 +60,7 @@ namespace tp_ultimo_de_prueba
             //variables del segundo equipo
             //
             int Nom_Equi2 = 0; // nombre del equipo 2 
+            int PV_equipo2_Total=0;//la suma total de la vida del equipo 2
             //
             //gladiador 1 equipo 2
             //
@@ -73,22 +75,29 @@ namespace tp_ultimo_de_prueba
             int Gladiador2_Equi2 = 0;// nombre gladiador 2 equipo 2
             int Total_daño_Bb = 0; //contador del daño causado en todo el juego del jugador 2 del equipo 2
             int PV_B_b = 0; //vida de gladiador 2 del equipo 2  
+            int ATK_B_b = 0; //ataque del gladiador 2 del equipo 2 
+            int DEF_B_b = 0;//defensa de gladiador 2 equipo 2
             //
             //gladiador 3 equipo 2
             //
             int Gladiador3_Equi2 = 0;// nombre gladiador 3 equipo 2
             int Total_daño_Bc = 0; //contador del daño causado en todo el juego del jugador 3 del equipo 2
             int PV_B_c = 0; //vida de gladiador 3 del equipo 2 
+            int ATK_B_c = 0; //ataque del gladiador 3 del equipo 2 
+            int DEF_B_c = 0;//defensa de gladiador 3 equipo 2
             //
             //gladiador 4 equipo 2
             //
             int Gladiador4_Equi2 = 0;// nombre gladiador 4 equipo 2
             int Total_daño_Bd = 0; //contador del daño causado en todo el juego del jugador 4 del equipo 2
             int PV_B_d = 0; //vida de gladiador 4 del equipo 2  
+            int ATK_B_d = 0; //ataque del gladiador 4 del equipo 2 
+            int DEF_B_d = 0;//defensa de gladiador 4 equipo 2
             //
             //gladiador 4 equipo 2
             //
             int Gladiador5_Equi2 = 0;// nombre gladiador 5 equipo 2
             int Total_daño_Be = 0; //contador del daño causado en todo el juego del jugador 5 del equipo 2
             int PV_B_e = 0; //vida de gladiador 5 del equipo 2  
+            int ATK_B_e = 0; //ataque del gladiador 5 del equipo 2 
             int DEF_B_e = 0;//defensa de gladiador 5 equipo 2
