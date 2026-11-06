@@ -180,11 +180,13 @@ namespace ConsoleApplication3
                 Console.Write("Introduzca el nombre del Gladiador 1: ");
                 NombreGladiador1_Eq2 = Console.ReadLine();
             }
+            int MVP = 0;
             int VidaGladiador1 = 20;
+            int Total_daño_Aa = 0; //contador del daño causado en todo el juego del jugador 1 del equipo 1
             int VidaGladiador2 = 20;
+            int Total_daño_Ba = 0; //contador del daño causado en todo el juego del jugador 1 del equipo 2
             int VidaMaxima = 25; //variable auxiliar
-            int VidaEquipo1 = VidaGladiador1; //sumar las vidas de todos los gladiadores
-            int VidaEquipo2 = VidaGladiador2;
+            
             int Ataque1 = 15;
             int Ataque2 = 15;
             int defen1 = 5;
@@ -196,13 +198,13 @@ namespace ConsoleApplication3
                 if (turno % 2 == 0)
                 {
                     Console.WriteLine("====================TURNO " + turno + "====================");
-                    Console.WriteLine("Turno de " + NombreGladiador1_Eq1);
+                    Console.WriteLine("Turno de " + NombreGladiador1_Eq2);
                     Console.WriteLine("HP = " + VidaGladiador2);
                 }
                 else
                 {
                     Console.WriteLine("====================TURNO " + turno + "====================");
-                    Console.WriteLine("Turno de " + NombreGladiador1_Eq2);
+                    Console.WriteLine("Turno de " + NombreGladiador1_Eq1);
                     Console.WriteLine();
                     Console.WriteLine("HP = " + VidaGladiador1);
                 }
@@ -224,7 +226,8 @@ namespace ConsoleApplication3
                                 Vida_1antes = 0;
                                 VidaGladiador1 = 0;
                             }
-                            Console.WriteLine("Ataca " + NombreGladiador1_Eq1 + "...");
+                            Total_daño_Ba = Puntos + Total_daño_Ba;
+                            Console.WriteLine("Ataca " + NombreGladiador1_Eq2 + "...");
                             Console.WriteLine();
                             Console.WriteLine("Gladiador1 queda con " + VidaGladiador1 + " puntos de vida.");
                             Console.WriteLine("Gladiador2 suma " + Puntos + " puntos.");
@@ -241,7 +244,8 @@ namespace ConsoleApplication3
                                 Vida_2antes = 0;
                                 VidaGladiador2 = 0;
                             }
-                            Console.WriteLine("Ataca " + NombreGladiador1_Eq2 + "...");
+                            Total_daño_Aa = Puntos + Total_daño_Aa;
+                            Console.WriteLine("Ataca " + NombreGladiador1_Eq1 + "...");
                             Console.WriteLine();
                             Console.WriteLine("Gladiador2 queda con " + VidaGladiador2 + " puntos de vida.");
                             Console.WriteLine("Gladiador1 suma " + Puntos + " puntos.");
@@ -256,14 +260,6 @@ namespace ConsoleApplication3
                             {
                                 contadorRecuperar++;
                                 int VidaCurada = RecuperarVida(VidaGladiador1, VidaGladiador2, VidaMaxima, turno);
-                                if (turno % 2 == 0)
-                                {
-                                    VidaGladiador2 = VidaCurada;
-                                }
-                                else
-                                {
-                                    VidaGladiador1 = VidaCurada;
-                                }
                                 Console.WriteLine("La vida del gladiador ahora es de " + VidaCurada + " puntos de vida.");
                                 break;
                             }
@@ -280,22 +276,48 @@ namespace ConsoleApplication3
                 }
                 turno++;
             }
-
+            int VidaEquipo1 = VidaGladiador1; //sumar las vidas de todos los gladiadores
+            int VidaEquipo2 = VidaGladiador2;
             Console.WriteLine("====================GAME OVER====================");
             if (VidaEquipo1 > 0)
             {
-                Console.WriteLine();
                 Console.WriteLine("El combate ha acabado... Ganan " + NombreEquipo1);
             }
             else
             {
-                Console.WriteLine();
                 Console.WriteLine("El combate ha acabado... Ganan " + NombreEquipo2);
             }
-
+            if (Total_daño_Aa > Total_daño_Ba)
+            {
+                MVP = Total_daño_Aa;
+                Console.WriteLine("MVP del torneo (" + MVP + " de daño causado): " + NombreGladiador1_Eq1 + "");
+            }
+            else
+            {
+                MVP = Total_daño_Ba;
+                Console.WriteLine("MVP del torneo (" + MVP + " de daño causado): " + NombreGladiador1_Eq2 + "");
+            }
+            string estadogla1;
+            if (VidaGladiador1 > 0)
+            {
+                estadogla1 = "de pie";
+            }
+            else
+            {
+                estadogla1 = "fuera de combate";
+            }
+            string estadogla2;
+            if (VidaGladiador2 > 0)
+            {
+                estadogla2 = "de pie";
+            }
+            else
+            {
+                estadogla2 = "fuera de combate";
+            }
             Console.WriteLine();
-            Console.WriteLine("Equipo: " + NombreEquipo1 + "     " + "NOMBRE: " + NombreGladiador1_Eq1 + "     " + "VIDA: " + VidaGladiador1 + "     " + "ATQ: " + Ataque1 + "     " + "DEF: " + defen1 + "     ");
-            Console.WriteLine("Equipo: " + NombreEquipo2 + "     " + "NOMBRE: " + NombreGladiador1_Eq2 + "     " + "VIDA: " + VidaGladiador2 + "     " + "ATQ: " + Ataque2 + "     " + "DEF: " + defen2 + "     ");
+            Console.WriteLine("Equipo: " + NombreEquipo1 + "     " + "NOMBRE: " + NombreGladiador1_Eq1 + "     " + "VIDA: " + VidaGladiador1 + "     " + "ATQ: " + Ataque1 + "     " + "DEF: " + defen1 + "     " + "DAÑO CAUSADO: " + Total_daño_Aa + "     " + "ESTADO: " + estadogla1 + "");
+            Console.WriteLine("Equipo: " + NombreEquipo2 + "     " + "NOMBRE: " + NombreGladiador1_Eq2 + "     " + "VIDA: " + VidaGladiador2 + "     " + "ATQ: " + Ataque2 + "     " + "DEF: " + defen2 + "     " + "DAÑO CAUSADO: " + Total_daño_Ba + "     " + "ESTADO: " + estadogla2 + "");
 
         }
     }
