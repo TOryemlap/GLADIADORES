@@ -1,0 +1,145 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            // CONFIGURACION DE LA PARTIDA
+
+            int modalidad = 0;
+
+            while (modalidad != 1 && modalidad != 2 &&
+                   modalidad != 3 && modalidad != 4)
+            {
+                Console.WriteLine("Elegi la modalidad:");
+                Console.WriteLine("1) 1 vs 1");
+                Console.WriteLine("2) 2 vs 2");
+                Console.WriteLine("3) 3 vs 3");
+                Console.WriteLine("4) 5 vs 5");
+
+                modalidad = int.Parse(Console.ReadLine());
+
+                if (modalidad != 1 && modalidad != 2 &&
+                    modalidad != 3 && modalidad != 4)
+                {
+                    Console.WriteLine("Modalidad incorrecta.");
+                }
+            }
+            //array para el total de glasiasores
+            int total;
+            string[] equipos = new string[2];
+            if (modalidad == 4)
+            {
+                total = (modalidad * 2) + 2;
+            }
+            else
+            {
+                total = modalidad * 2;
+            }
+
+            string[] nombres = new string[total];
+            int[] vida = new int[total];
+            int[] ataque = new int[total];
+            int[] defensa = new int[total];
+
+            // NOMBRES DE LOS EQUIPOS
+
+            for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine("Nombre del equipo " + (i + 1));
+                equipos[i] = Console.ReadLine();
+            }
+
+            // CREACION DE GLADIADORES
+
+            for (int i = 0; i < total; i++)
+            {
+                Console.WriteLine("\nGladiador " + (i + 1));
+
+                // Nombre
+
+                bool repetido = true;
+
+                while (repetido)
+                {
+                    repetido = false;
+
+                    Console.WriteLine("Nombre:");
+                    nombres[i] = Console.ReadLine();
+
+                    if (nombres[i] == "")
+                    {
+                        repetido = true;
+                        Console.WriteLine("El nombre no puede estar vacio.");
+                    }
+
+                    for (int j = 0; j < i; j++)
+                    {
+                        if (nombres[i] == nombres[j])
+                        {
+                            repetido = true;
+                            Console.WriteLine("Ese nombre ya existe.");
+                        }
+                    }
+                }
+
+                // Vida
+
+                vida[i] = IngresarValor("Vida", 10, 25);
+
+                // Ataque
+
+                ataque[i] = IngresarValor("Ataque", 5, 20);
+
+                // Defensa
+
+                defensa[i] = IngresarValor("Defensa", 1, 10);
+
+                // COMPROBAR LOS 40 PUNTOS
+
+                while (vida[i] + ataque[i] + defensa[i] != 40)
+                {
+                    Console.WriteLine("Los puntos suman: " +
+                        (vida[i] + ataque[i] + defensa[i]));
+
+                    Console.WriteLine("Debes repartir exactamente 40 puntos.");
+
+                    vida[i] = IngresarValor("Vida", 10, 25);
+                    ataque[i] = IngresarValor("Ataque", 5, 20);
+                    defensa[i] = IngresarValor("Defensa", 1, 10);
+                }
+
+                Console.WriteLine("Gladiador creado correctamente.");
+            }
+      
+        }
+
+        // FUNCION PARA INGRESAR LOS ATRIBUTOS
+
+        static int IngresarValor(string atributo, int minimo, int maximo)
+        {
+            int valor;
+
+            do
+            {
+                Console.WriteLine(atributo + ":");
+                valor = int.Parse(Console.ReadLine());
+
+                if (valor < minimo || valor > maximo)
+                {
+                    Console.WriteLine("El valor debe estar entre "
+                        + minimo + " y " + maximo);
+                }
+
+            } while (valor < minimo || valor > maximo);
+
+            return valor;
+        }
+    }
+}
