@@ -256,6 +256,14 @@ namespace ConsoleApplication3
                             {
                                 contadorRecuperar++;
                                 int VidaCurada = RecuperarVida(VidaGladiador1, VidaGladiador2, VidaMaxima, turno);
+                                if (turno % 2 == 0)
+                                {
+                                    VidaGladiador2 = VidaCurada;
+                                }
+                                else
+                                {
+                                    VidaGladiador1 = VidaCurada;
+                                }
                                 Console.WriteLine("La vida del gladiador ahora es de " + VidaCurada + " puntos de vida.");
                                 break;
                             }
@@ -272,14 +280,23 @@ namespace ConsoleApplication3
                 }
                 turno++;
             }
+
+            Console.WriteLine("====================GAME OVER====================");
             if (VidaEquipo1 > 0)
             {
+                Console.WriteLine();
                 Console.WriteLine("El combate ha acabado... Ganan " + NombreEquipo1);
             }
             else
             {
+                Console.WriteLine();
                 Console.WriteLine("El combate ha acabado... Ganan " + NombreEquipo2);
             }
+
+            Console.WriteLine();
+            Console.WriteLine("Equipo: " + NombreEquipo1 + "     " + "NOMBRE: " + NombreGladiador1_Eq1 + "     " + "VIDA: " + VidaGladiador1 + "     " + "ATQ: " + Ataque1 + "     " + "DEF: " + defen1 + "     ");
+            Console.WriteLine("Equipo: " + NombreEquipo2 + "     " + "NOMBRE: " + NombreGladiador1_Eq2 + "     " + "VIDA: " + VidaGladiador2 + "     " + "ATQ: " + Ataque2 + "     " + "DEF: " + defen2 + "     ");
+
         }
     }
 }
