@@ -1,0 +1,101 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            int Vida_1 = 18;
+            int Ataque1 = 15;
+            int defen1 = 5;
+            int Vida_1antes = Vida_1;
+
+            int Vida_2 = 18;
+            int Ataque2 = 15;
+            int defen2 = 5;
+            int Vida_2antes = Vida_2;
+
+            while (Vida_1 > 0)
+            {
+                if (Vida_2 <= 0)
+                {
+                    break;
+                }
+
+                Console.WriteLine("Turno del jugador 1.");
+                Vida_2antes = Vida_2;
+                Vida_2 = Opciones(Vida_2, Ataque1, defen2);
+                Vida_2antes = Vida_2antes - Vida_2;
+
+                Console.WriteLine("El jugador 1 esta atacando al jugador 2.");
+                Console.WriteLine("Al jugador 2 le quedan " + Vida_2 + " puntos de vida.");
+                Console.WriteLine("El jugador 1 hizo " + Vida_2antes + " puntos de daño.");
+
+                if (Vida_2 <= 0)
+                {
+                    Console.WriteLine("El jugador 2 quedo eliminado.");
+                    Console.WriteLine("El jugador 2 esta inhabilitado y ya no se puede utilizar.");
+                    break;
+                }
+
+                Console.WriteLine("Turno del jugador 2.");
+                Vida_1antes = Vida_1;
+                Vida_1 = Opciones(Vida_1, Ataque2, defen1);
+                Vida_1antes = Vida_1antes - Vida_1;
+
+                Console.WriteLine("El jugador 2 esta atacando al jugador 1.");
+                Console.WriteLine("Al jugador 1 le quedan " + Vida_1 + " puntos de vida.");
+                Console.WriteLine("El jugador 2 hizo " + Vida_1antes + " puntos de daño.");
+
+                if (Vida_1 <= 0)
+                {
+                    Console.WriteLine("El jugador 1 quedo eliminado.");
+                    Console.WriteLine("El jugador 1 esta inhabilitado y ya no se puede utilizar.");
+                }
+            }
+
+            if (Vida_1 <= 0)
+            {
+                Console.WriteLine("Gano el jugador 2");
+            }
+            else if (Vida_2 <= 0)
+            {
+                Console.WriteLine("Gano el jugador 1");
+            }
+        }
+
+        
+        static int Opciones(int Vida_2, int Ataque1, int defen2)
+        {
+            Console.WriteLine("¿Que accion realiza?");
+            int Accion = int.Parse(Console.ReadLine());
+
+            if (Accion == 1)
+            {
+                Ataque1 = Ataque1 - defen2;
+
+                if (Ataque1 < 1)
+                {
+                    Ataque1 = 1;
+                }
+
+                if (Ataque1 > Vida_2)
+                {
+                    Ataque1 = Vida_2;
+                    Vida_2 = 0;
+                }
+                else
+                {
+                    Vida_2 = Vida_2 - Ataque1;
+                }
+            }
+
+            return Vida_2;
+        }
+    }
+}
