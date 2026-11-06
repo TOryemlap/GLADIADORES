@@ -38,7 +38,7 @@ namespace ConsoleApplication3
 
                 if (Vida_2 <= 0)
                 {
-                    Console.WriteLine("El jugador 2 quedo eliminado.");
+                    Console.WriteLine("El jugador 2, Queda fuera del  combate.");
                     Console.WriteLine("El jugador 2 esta inhabilitado y ya no se puede utilizar.");
                     break;
                 }
@@ -54,7 +54,7 @@ namespace ConsoleApplication3
 
                 if (Vida_1 <= 0)
                 {
-                    Console.WriteLine("El jugador 1 quedo eliminado.");
+                    Console.WriteLine("El jugador 1, Queda fuera del combate.");
                     Console.WriteLine("El jugador 1 esta inhabilitado y ya no se puede utilizar.");
                 }
             }
