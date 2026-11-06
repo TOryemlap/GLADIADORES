@@ -45,7 +45,7 @@ namespace ConsoleApplication3
                 return VidaCurada;
             }
         }
-        static int Ataque_ju1(int VidaGladiador2, int VidaGladiador1, int Ataque1, int Ataque2, int defen2, int defen1, int turno)
+        static int Ataque_ju1(int Ataque1, int Ataque2, int VidaGladiador2, int VidaGladiador1, int defen1, int defen2, int turno)
         {
             if (turno % 2 == 0)
             {
@@ -56,17 +56,18 @@ namespace ConsoleApplication3
                     {
                         Ataque1 = 1;
                     }
-                    if (Ataque1 > VidaGladiador2)
+                    if (Ataque1 >= VidaGladiador2)
                     {
                         Ataque1 = VidaGladiador2;
                         VidaGladiador2 = 0;
+
                     }
                     else
                     {
                         VidaGladiador2 = VidaGladiador2 - Ataque1;
                     }
                 }
-                return VidaGladiador2;
+                return Ataque1;
             }
             else
             {
@@ -77,18 +78,20 @@ namespace ConsoleApplication3
                     {
                         Ataque2 = 1;
                     }
-                    if (Ataque2 > VidaGladiador1)
+                    if (Ataque2 >= VidaGladiador1)
                     {
                         Ataque2 = VidaGladiador1;
                         VidaGladiador1 = 0;
+
                     }
                     else
                     {
                         VidaGladiador1 = VidaGladiador1 - Ataque2;
                     }
                 }
-                return VidaGladiador1;
+                return Ataque2;
             }
+
         }
         static void Main(string[] args)
         {
@@ -177,8 +180,8 @@ namespace ConsoleApplication3
                 Console.Write("Introduzca el nombre del Gladiador 1: ");
                 NombreGladiador1_Eq2 = Console.ReadLine();
             }
-            int VidaGladiador1 = 15;
-            int VidaGladiador2 = 18;
+            int VidaGladiador1 = 20;
+            int VidaGladiador2 = 20;
             int VidaMaxima = 25; //variable auxiliar
             int VidaEquipo1 = VidaGladiador1; //sumar las vidas de todos los gladiadores
             int VidaEquipo2 = VidaGladiador2;
@@ -188,7 +191,7 @@ namespace ConsoleApplication3
             int defen2 = 5;
             int turno = 1;
             int contadorRecuperar = 0;
-            while (VidaGladiador1 > 0 || VidaGladiador2 > 0)
+            while (VidaGladiador1 > 0 && VidaGladiador2 > 0)
             {
                 if (turno % 2 == 0)
                 {
@@ -215,7 +218,13 @@ namespace ConsoleApplication3
                             int Vida_1antes = VidaGladiador1;
                             VidaGladiador1 = Ataque_ju1(Ataque1, Ataque2, VidaGladiador2, VidaGladiador1, defen1, defen2, turno);
                             int Puntos = Vida_1antes - VidaGladiador1;
-                            Console.WriteLine("Ataca el Gladiador2...");
+                            if (VidaGladiador1 == Vida_1antes)
+                            {
+                                Puntos = Vida_1antes;
+                                Vida_1antes = 0;
+                                VidaGladiador1 = 0;
+                            }
+                            Console.WriteLine("Ataca " + NombreGladiador1_Eq1 + "...");
                             Console.WriteLine();
                             Console.WriteLine("Gladiador1 queda con " + VidaGladiador1 + " puntos de vida.");
                             Console.WriteLine("Gladiador2 suma " + Puntos + " puntos.");
@@ -226,7 +235,13 @@ namespace ConsoleApplication3
                             int Vida_2antes = VidaGladiador2;
                             VidaGladiador2 = Ataque_ju1(Ataque1, Ataque2, VidaGladiador2, VidaGladiador1, defen1, defen2, turno);
                             int Puntos = Vida_2antes - VidaGladiador2;
-                            Console.WriteLine("Ataca el Gladiador1...");
+                            if (VidaGladiador2 == Vida_2antes)
+                            {
+                                Puntos = Vida_2antes; ;
+                                Vida_2antes = 0;
+                                VidaGladiador2 = 0;
+                            }
+                            Console.WriteLine("Ataca " + NombreGladiador1_Eq2 + "...");
                             Console.WriteLine();
                             Console.WriteLine("Gladiador2 queda con " + VidaGladiador2 + " puntos de vida.");
                             Console.WriteLine("Gladiador1 suma " + Puntos + " puntos.");
