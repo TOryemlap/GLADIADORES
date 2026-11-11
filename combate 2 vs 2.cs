@@ -61,7 +61,7 @@ namespace ConsoleApplication1
 
                  while ((PV_A_a > 0 || PV_A_b > 0) && (PV_B_a > 0 || PV_B_b > 0))
                 {
-                    Console.WriteLine("\n================ TURNO " + turno + " ================");
+                    Console.WriteLine("================ TURNO " + turno + " ================");
 
                     Console.WriteLine("EQUIPO 1: " + Nom_Equi1);
                     Console.WriteLine("1. " + Gladiador1_Equi1 + " - Vida: " + PV_A_a + "/" + VidaMax_A_a);
@@ -378,7 +378,7 @@ namespace ConsoleApplication1
 
                     turno++;
                 }
-                Console.WriteLine("\n================ FIN DEL COMBATE ================");
+                Console.WriteLine("================ FIN DEL COMBATE ================");
 
                 if (PV_A_a > 0 || PV_A_b > 0)
                 {
