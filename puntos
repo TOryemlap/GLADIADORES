@@ -1,0 +1,293 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+ int Modalidad = 0;
+
+                string Nom_Equi1 = "";
+                string Nom_Equi2 = "";
+
+                string Gladiador1_Equi1 = "";
+                string Gladiador2_Equi1 = "";
+                string Gladiador3_Equi1 = "";
+                string Gladiador4_Equi1 = "";
+                string Gladiador5_Equi1 = "";
+
+                string Gladiador1_Equi2 = "";
+                string Gladiador2_Equi2 = "";
+                string Gladiador3_Equi2 = "";
+                string Gladiador4_Equi2 = "";
+                string Gladiador5_Equi2 = "";
+
+                int PV_A_a = 0, PV_A_b = 0, PV_A_c = 0;
+                int PV_A_d = 0, PV_A_e = 0;
+
+                int PV_B_a = 0, PV_B_b = 0, PV_B_c = 0;
+                int PV_B_d = 0, PV_B_e = 0;
+
+                int ATK_A_a = 0, ATK_A_b = 0, ATK_A_c = 0;
+                int ATK_A_d = 0, ATK_A_e = 0;
+
+                int ATK_B_a = 0, ATK_B_b = 0, ATK_B_c = 0;
+                int ATK_B_d = 0, ATK_B_e = 0;
+
+                int Def_A_a = 0, Def_A_b = 0, Def_A_c = 0;
+                int Def_A_d = 0, Def_A_e = 0;
+
+                int Def_B_a = 0, Def_B_b = 0, Def_B_c = 0;
+                int Def_B_d = 0, Def_B_e = 0;
+
+                while (Modalidad != 1 && Modalidad != 2 &&
+                       Modalidad != 3 && Modalidad != 4)
+                {
+                    Console.WriteLine("Elegi la modalidad:");
+                    Console.WriteLine("1) 1 vs 1");
+                    Console.WriteLine("2) 2 vs 2");
+                    Console.WriteLine("3) 3 vs 3");
+                    Console.WriteLine("4) 5 vs 5");
+
+                    Modalidad = int.Parse(Console.ReadLine());
+
+                    if (Modalidad != 1 && Modalidad != 2 &&
+                        Modalidad != 3 && Modalidad != 4)
+                    {
+                        Console.WriteLine("Modalidad incorrecta.");
+                    }
+                }
+
+                int cantidadEquipo;
+
+                if (Modalidad == 4)
+                {
+                    cantidadEquipo = 5;
+                }
+                else
+                {
+                    cantidadEquipo = Modalidad;
+                }
+
+                int total = cantidadEquipo * 2;
+
+                for (int i = 0; i < total; i++)
+                {
+                    if (i == 0)
+                    {
+                        Console.WriteLine("Jugador 1");
+                        Console.WriteLine("Nombre del equipo 1:");
+                        Nom_Equi1 = Console.ReadLine();
+                    }
+
+                    if (i == cantidadEquipo)
+                    {
+                        Console.WriteLine("Jugador 2");
+                        Console.WriteLine("Nombre del equipo 2:");
+                        Nom_Equi2 = Console.ReadLine();
+                    }
+
+                    string nombreActual = "";
+                    bool repetido = true;
+
+                    Console.WriteLine();
+                    Console.WriteLine("Gladiador " + (i + 1));
+
+                    while (repetido)
+                    {
+                        repetido = false;
+
+                        Console.WriteLine("Nombre del gladiador:");
+                        nombreActual = Console.ReadLine();
+
+                        if (nombreActual == "")
+                        {
+                            repetido = true;
+                            Console.WriteLine("El nombre no puede estar vacio.");
+                        }
+                        else if (NombreExiste(nombreActual,
+                            Gladiador1_Equi1, Gladiador2_Equi1,
+                            Gladiador3_Equi1, Gladiador4_Equi1,
+                            Gladiador5_Equi1, Gladiador1_Equi2,
+                            Gladiador2_Equi2, Gladiador3_Equi2,
+                            Gladiador4_Equi2, Gladiador5_Equi2))
+                        {
+                            repetido = true;
+                            Console.WriteLine("Ese nombre ya existe.");
+                        }
+                    }
+
+                    int vida = 0;
+                    int ataque = 0;
+                    int defensa = 0;
+                    int usados = 0;
+
+                    do
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("Reparti los 40 puntos del gladiador.");
+
+                        vida = IngresarValor("Vida", 10, 25);
+
+                        ataque = IngresarValor("Ataque", 5, 20);
+
+                        defensa = IngresarValor("Defensa", 1, 10);
+
+                        usados = vida + ataque + defensa;
+
+                        if (usados != 40)
+                        {
+                            Console.WriteLine("La suma de los atributos es: " + usados);
+                            Console.WriteLine("Tenes que utilizar exactamente 40 puntos.");
+                            Console.WriteLine("Volve a repartir los tres atributos.");
+                        }
+
+                    } while (usados != 40);
+
+                    Console.WriteLine("Los 40 puntos fueron repartidos correctamente.");
+
+                    int equipo;
+                    int posicion;
+
+                    if (i < cantidadEquipo)
+                    {
+                        equipo = 1;
+                        posicion = i;
+                    }
+                    else
+                    {
+                        equipo = 2;
+                        posicion = i - cantidadEquipo;
+                    }
+
+                    if (equipo == 1)
+                    {
+                        switch (posicion)
+                        {
+                            case 0:
+                                Gladiador1_Equi1 = nombreActual;
+                                PV_A_a = vida;
+                                ATK_A_a = ataque;
+                                Def_A_a = defensa;
+                                break;
+
+                            case 1:
+                                Gladiador2_Equi1 = nombreActual;
+                                PV_A_b = vida;
+                                ATK_A_b = ataque;
+                                Def_A_b = defensa;
+                                break;
+
+                            case 2:
+                                Gladiador3_Equi1 = nombreActual;
+                                PV_A_c = vida;
+                                ATK_A_c = ataque;
+                                Def_A_c = defensa;
+                                break;
+
+                            case 3:
+                                Gladiador4_Equi1 = nombreActual;
+                                PV_A_d = vida;
+                                ATK_A_d = ataque;
+                                Def_A_d = defensa;
+                                break;
+
+                            case 4:
+                                Gladiador5_Equi1 = nombreActual;
+                                PV_A_e = vida;
+                                ATK_A_e = ataque;
+                                Def_A_e = defensa;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        switch (posicion)
+                        {
+                            case 0:
+                                Gladiador1_Equi2 = nombreActual;
+                                PV_B_a = vida;
+                                ATK_B_a = ataque;
+                                Def_B_a = defensa;
+                                break;
+
+                            case 1:
+                                Gladiador2_Equi2 = nombreActual;
+                                PV_B_b = vida;
+                                ATK_B_b = ataque;
+                                Def_B_b = defensa;
+                                break;
+
+                            case 2:
+                                Gladiador3_Equi2 = nombreActual;
+                                PV_B_c = vida;
+                                ATK_B_c = ataque;
+                                Def_B_c = defensa;
+                                break;
+
+                            case 3:
+                                Gladiador4_Equi2 = nombreActual;
+                                PV_B_d = vida;
+                                ATK_B_d = ataque;
+                                Def_B_d = defensa;
+                                break;
+
+                            case 4:
+                                Gladiador5_Equi2 = nombreActual;
+                                PV_B_e = vida;
+                                ATK_B_e = ataque;
+                                Def_B_e = defensa;
+                                break;
+                        }
+                    }
+
+                    Console.WriteLine("Gladiador creado correctamente.");
+                    Console.WriteLine();
+                }
+            }
+
+            static int IngresarValor(string atributo, int minimo, int maximo)
+            {
+                int valor;
+
+                do
+                {
+                    Console.WriteLine(atributo + ":");
+                    valor = int.Parse(Console.ReadLine());
+
+                    if (valor < minimo || valor > maximo)
+                    {
+                        Console.WriteLine("El valor debe estar entre "
+                            + minimo + " y " + maximo);
+                    }
+
+                } while (valor < minimo || valor > maximo);
+
+                return valor;
+            }
+
+static bool NombreExiste(string nombre,
+    string g1, string g2, string g3, string g4, string g5,
+    string g6, string g7, string g8, string g9, string g10)
+{
+    if (nombre == g1 || nombre == g2 ||
+        nombre == g3 || nombre == g4 ||
+        nombre == g5 || nombre == g6 ||
+        nombre == g7 || nombre == g8 ||
+        nombre == g9 || nombre == g10)
+    {
+        return true;
+    }
+
+    return false;
+}
+
+
+        }
+    }
+
