@@ -123,15 +123,326 @@ namespace ConsoleApplication3
             }
             int MVP = 0;
             int VidaGladiador1 = 20;
-            int Total_daño_Aa = 0; //contador del daño causado en todo el juego del jugador 1 del equipo 1
             int VidaGladiador2 = 20;
-            int Total_daño_Ba = 0; //contador del daño causado en todo el juego del jugador 1 del equipo 2
             int VidaMaxima = 25; //variable auxiliar
-
             int Ataque1 = 15;
             int Ataque2 = 15;
             int defen1 = 5;
             int defen2 = 5;
+            ///////////////////////////////////////////////////////////////////////////
+            //
+            //variables del equipo 1 
+            //
+            int PV_equipo1_Total = 0;//la suma total de la vida del equipo 1
+            int Nom_Equi1 = 0; // nombre del equipo numero 1
+            //
+            //gladiador 1 equipo 1 
+            //
+            int Gladiador1_Equi1 = 0;// nombre gladiador 1 equipo 1
+            int Total_daño_Aa = 0; //contador del daño causado en todo el juego del jugador 1 del equipo 1
+            int PV_A_a = 0; //vida de gladiador 1 del equipo 1  
+            int ATK_A_a = 0; //ataque del gladiador 1 del equipo 1 
+            int DEF_A_a = 0;//defensa de gladiador 1 equipo 1
+            //
+            //gladiador 2 equipo 1
+            //
+            int Gladiador2_Equi1 = 0;// nombre gladiador 2 equipo 1
+            int Total_daño_Ab = 0; //contador del daño causado en todo el juego del jugador 2 del equipo 1
+            int PV_A_b = 0; //vida de gladiador 2 del equipo 1  
+            int ATK_A_b = 0; //ataque del gladiador 2 del equipo 1 
+            int DEF_A_b = 0;//defensa de gladiador 2 equipo 1
+            //
+            //gladiador 3 equipo 1 
+            //
+            int Gladiador3_Equi1 = 0;// nombre gladiador 3 equipo 1
+            int Total_daño_Ac = 0; //contador del daño causado en todo el juego del jugador 3 del equipo 1
+            int PV_A_c = 0; //vida de gladiador 3 del equipo 1  
+            int ATK_A_c = 0; //ataque del gladiador 3 del equipo 1 
+            int DEF_A_c = 0;//defensa de gladiador 3 equipo 1
+            //
+            //gladiador 4 equipo 1 
+            //
+            int Gladiador4_Equi1 = 0;// nombre gladiador 4 equipo 1
+            int Total_daño_Ad = 0; //contador del daño causado en todo el juego del jugador 4 del equipo 1
+            int PV_A_d = 0; //vida de gladiador 4 del equipo 1  
+            int ATK_A_d = 0; //ataque del gladiador 4 del equipo 1
+            int DEF_A_d = 0;//defensa de gladiador 4 equipo 1
+            //
+            //gladiador 5 equipo 1 
+            //
+            int Gladiador5_Equi1 = 0;// nombre gladiador 5 equipo 1
+            int Total_daño_Ae = 0; //contador del daño causado en todo el juego del jugador 5 del equipo 1
+            int PV_A_e = 0; //vida de gladiador 5 del equipo 1  
+            int ATK_A_e = 0; //ataque del gladiador 5 del equipo 1 
+            int DEF_A_e = 0;//defensa de gladiador 5 equipo 1
+            //
+            //variables del segundo equipo
+            //
+            int Nom_Equi2 = 0; // nombre del equipo 2 
+            int PV_equipo2_Total = 0;//la suma total de la vida del equipo 2
+            //
+            //gladiador 1 equipo 2
+            //
+            int Gladiador1_Equi2 = 0;// nombre gladiador 1 equipo 2
+            int Total_daño_Ba = 0; //contador del daño causado en todo el juego del jugador 1 del equipo 2
+            int PV_B_a = 0; //vida de gladiador 1 del equipo 2  
+            int ATK_B_a = 0; //ataque del gladiador 1 del equipo 2 
+            int DEF_B_a = 0;//defensa de gladiador 1 equipo 2
+            //
+            //gladiador 2 equipo 2
+            //
+            int Gladiador2_Equi2 = 0;// nombre gladiador 2 equipo 2
+            int Total_daño_Bb = 0; //contador del daño causado en todo el juego del jugador 2 del equipo 2
+            int PV_B_b = 0; //vida de gladiador 2 del equipo 2  
+            int ATK_B_b = 0; //ataque del gladiador 2 del equipo 2 
+            int DEF_B_b = 0;//defensa de gladiador 2 equipo 2
+            //
+            //gladiador 3 equipo 2
+            //
+            int Gladiador3_Equi2 = 0;// nombre gladiador 3 equipo 2
+            int Total_daño_Bc = 0; //contador del daño causado en todo el juego del jugador 3 del equipo 2
+            int PV_B_c = 0; //vida de gladiador 3 del equipo 2 
+            int ATK_B_c = 0; //ataque del gladiador 3 del equipo 2 
+            int DEF_B_c = 0;//defensa de gladiador 3 equipo 2
+            //
+            //gladiador 4 equipo 2
+            //
+            int Gladiador4_Equi2 = 0;// nombre gladiador 4 equipo 2
+            int Total_daño_Bd = 0; //contador del daño causado en todo el juego del jugador 4 del equipo 2
+            int PV_B_d = 0; //vida de gladiador 4 del equipo 2  
+            int ATK_B_d = 0; //ataque del gladiador 4 del equipo 2 
+            int DEF_B_d = 0;//defensa de gladiador 4 equipo 2
+            //
+            //gladiador 4 equipo 2
+            //
+            int Gladiador5_Equi2 = 0;// nombre gladiador 5 equipo 2
+            int Total_daño_Be = 0; //contador del daño causado en todo el juego del jugador 5 del equipo 2
+            int PV_B_e = 0; //vida de gladiador 5 del equipo 2  
+            int ATK_B_e = 0; //ataque del gladiador 5 del equipo 2 
+            int DEF_B_e = 0;//defensa de gladiador 5 equipo 2           
+            int j = 0;
+            for (int i = 1; i == Modalidad; i++)
+            {
+                int ataque = 0;//variable auxiliar
+                int defensa = 0;//variable auxiliar
+                int vida = 0;//variable auxiliar
+                int auxiliar2 = 0;
+                int auxiliar1 = 0;
+                int cont_pts_2 = 40;
+                int cont_pts_1 = 40 ;
+                Console.WriteLine("==================== HORA DE DISTRIBUIR PUNTOS ====================");
+                Console.WriteLine();
+                Console.WriteLine("tienes 40 puntos exactos para distribuir los por cada gladiador");
+                Console.WriteLine();
+                Console.WriteLine();
+                //definir puntos turno equipo 1 
+                do
+                {
+                    cont_pts_1 = 40;
+                    Console.WriteLine("Turno del equipo " + NombreEquipo1 + " de distribuir los puntos para " + gladiadoresEq1[j] + "");
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.Write("ataque: (5 min, 20 max): ");
+                    ataque = int.Parse(Console.ReadLine());
+                    while (ataque < 5 || ataque > 20)
+                    {
+                        Console.WriteLine();
+                        Console.Write("ataque: (5 min, 20 max): ");
+                        ataque = int.Parse(Console.ReadLine());
+                    }
+                    cont_pts_1 = cont_pts_1 - ataque;
+                    Console.WriteLine();
+                    Console.WriteLine("le quedan " + cont_pts_1 + " puntos");
+                    if (cont_pts_1>0)
+                    {
+                        Console.WriteLine("vida: (min 10, max 25): ");
+                        vida = int.Parse(Console.ReadLine());
+                        while (vida < 10 || vida > 25)
+                        {
+                            Console.WriteLine();
+                            Console.Write("vida: (min 10, max 25): ");
+                            vida = int.Parse(Console.ReadLine());
+                        }
+                        cont_pts_1 = cont_pts_1 - vida;
+                        Console.WriteLine();
+                        Console.WriteLine("le quedan " + cont_pts_1 + " puntos");        
+                        if (cont_pts_1>0)
+                        {
+                            Console.WriteLine("defensa: (min 1, max 10): ");
+                            defensa = int.Parse(Console.ReadLine());
+                            while (defensa < 1 || defensa > 10)
+                            {
+                                Console.WriteLine();
+                                Console.Write("defensa: (min 1, max 10): ");
+                                defensa = int.Parse(Console.ReadLine());
+                            }
+                            cont_pts_1 = cont_pts_1 - defensa;
+                            if (cont_pts_1==0)
+                            {
+                                auxiliar1 = 1;
+                            }
+                            else
+                            {
+                                if (cont_pts_1 > 0)
+                                {
+                                    Console.WriteLine("");
+                                    Console.WriteLine("NO LLEGASTE A LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                    Console.WriteLine("");                                
+                                }
+                                else
+                                {
+                                    Console.WriteLine("");                               
+                                    Console.WriteLine("SOBRE PASASTE LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");                               
+                                    Console.WriteLine("");
+                                }                               
+                            }
+                        }
+                        else
+                        {
+                            if (cont_pts_1 > 0)
+                            {
+                                Console.WriteLine("");                              
+                                Console.WriteLine("NO LLEGASTE A LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                Console.WriteLine("");                             
+                            }
+                            else
+                            {                               
+                                Console.WriteLine("");
+                                Console.WriteLine("SOBRE PASASTE LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                Console.WriteLine("");                     
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (cont_pts_1 > 0)
+                        {
+                            Console.WriteLine("");                         
+                            Console.WriteLine("NO LLEGASTE A LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                            Console.WriteLine("");                        
+                        }
+                        else
+                        {
+                            Console.WriteLine("");                      
+                            Console.WriteLine("SOBRE PASASTE LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                            Console.WriteLine("");                      
+                        }
+                    }
+                    
+                } while (auxiliar1 == 0);
+                Console.WriteLine("");           
+                Console.WriteLine("Puntos distribuidos correctamente");            
+                Console.WriteLine("");
+                VidaGladiador1 = vida;
+                Ataque1 = ataque;
+                defen1 = defensa;
+                // definir puntos equipo 2 
+                Console.WriteLine();
+                Console.WriteLine();
+                do
+                {
+                    cont_pts_2 = 40;
+                    Console.WriteLine("Turno del equipo " + NombreEquipo2 + " de distribuir los puntos para " + gladiadoresEq2[j] + "");
+                    Console.WriteLine();
+                    Console.Write("ataque: (5 min, 20 max): ");
+                    ataque = int.Parse(Console.ReadLine());
+                    while (ataque < 5 || ataque > 20)
+                    {
+                        Console.WriteLine();
+                        Console.Write("ataque: (5 min, 20 max): ");
+                        ataque = int.Parse(Console.ReadLine());
+                    }
+                    cont_pts_2 = cont_pts_2 - ataque;
+                    Console.WriteLine();
+                    Console.WriteLine("le quedan " + cont_pts_2 + " puntos");
+                    if (cont_pts_2 > 0)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("vida: (min 10, max 25): ");
+                        vida = int.Parse(Console.ReadLine());
+                        while (vida < 10 || vida > 25)
+                        {
+                            Console.WriteLine();
+                            Console.Write("vida: (min 10, max 25): ");
+                            vida = int.Parse(Console.ReadLine());
+                        }
+                        cont_pts_2 = cont_pts_2 - vida;
+                        Console.WriteLine();
+                        Console.WriteLine("le quedan " + cont_pts_2 + " puntos");
+                        if (cont_pts_2 > 0)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("defensa: (min 1, max 10): ");
+                            defensa = int.Parse(Console.ReadLine());
+                            while (defensa < 1 || defensa > 10)
+                            {
+                                Console.WriteLine();
+                                Console.Write("defensa: (min 1, max 10): ");
+                                defensa = int.Parse(Console.ReadLine());
+                            }
+                            cont_pts_2 = cont_pts_2 - defensa;
+                            if (cont_pts_2 == 0)
+                            {
+                                auxiliar2 = 1;
+                            }
+                            else
+                            {
+                                if (cont_pts_2 > 0)
+                                {
+                                    Console.WriteLine("");                                   
+                                    Console.WriteLine("NO LLEGASTE A LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                    Console.WriteLine("");                                
+                                }
+                                else
+                                {
+                                    Console.WriteLine("");                                 
+                                    Console.WriteLine("SOBRE PASASTE LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                    Console.WriteLine("");                                
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (cont_pts_2 > 0)
+                            {
+                                Console.WriteLine("");                           
+                                Console.WriteLine("NO LLEGASTE A LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");                                
+                                Console.WriteLine("");
+                            }
+                            else
+                            {
+                                Console.WriteLine("");                               
+                                Console.WriteLine("SOBRE PASASTE LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                Console.WriteLine("");                               
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (cont_pts_2 > 0)
+                        {
+                            Console.WriteLine("");                        
+                            Console.WriteLine("NO LLEGASTE A LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                            Console.WriteLine("");                        
+                        }
+                        else
+                        {
+                            Console.WriteLine("");                          
+                            Console.WriteLine("SOBRE PASASTE LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                            Console.WriteLine("");                           
+                        }
+                    }
+
+                } while (auxiliar2 == 0);
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("Puntos distribuidos correctamente");
+                Console.WriteLine("");
+                Console.WriteLine("");
+                VidaGladiador2 = vida;
+                Ataque2 = ataque;
+                defen2 = defensa;
+            }
             int turno = 1;
             int contadorRecuperar = 0;
             while (VidaGladiador1 > 0 && VidaGladiador2 > 0)
