@@ -1,0 +1,969 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication3
+{
+    class Program
+    {
+        static int ModalidadFun()
+        {
+            Console.WriteLine("Que modalidad Elige: | 1. 1v1 | 2. 2v2 | 3. 3v3 | 5. 5v5 |");
+            int Modalidad = int.Parse(Console.ReadLine());
+            return Modalidad;
+        }
+
+        static int RecuperarVida(int VidaGladiador1, int VidaGladiador2, int VidaMaxima, int turno)
+        {
+            Console.WriteLine("Seleccionó RECUPERAR VIDA.");
+            if (turno % 2 == 0)
+            {
+                if (VidaMaxima - VidaGladiador2 >= 5)
+                {
+                    int VidaCurada = VidaGladiador2 + 5;
+                    return VidaCurada;
+                }
+                else
+                {
+                    int Curacion = VidaMaxima - VidaGladiador2;
+                    int VidaCurada = VidaGladiador2 + Curacion;
+                    return VidaCurada;
+                }
+            }
+            else
+                if (VidaMaxima - VidaGladiador1 >= 5)
+            {
+                int VidaCurada = VidaGladiador1 + 5;
+                return VidaCurada;
+            }
+            else
+            {
+                int Curacion = VidaMaxima - VidaGladiador1;
+                int VidaCurada = VidaGladiador1 + Curacion;
+                return VidaCurada;
+            }
+        }
+
+        static int Ataque_ju1(int Ataque1, int Ataque2, int VidaGladiador2, int VidaGladiador1, int defen1, int defen2, int turno)
+        {
+            if (turno % 2 == 0)
+            {
+                if (VidaGladiador2 > 0)
+                {
+                    Ataque1 = Ataque1 - defen2;
+                    if (Ataque1 < 1)
+                    {
+                        Ataque1 = 1;
+                    }
+                    if (Ataque1 >= VidaGladiador2)
+                    {
+                        Ataque1 = VidaGladiador2;
+                        VidaGladiador2 = 0;
+                    }
+                    else
+                    {
+                        VidaGladiador2 = VidaGladiador2 - Ataque1;
+                    }
+                }
+                return Ataque1;
+            }
+            else
+            {
+                if (VidaGladiador1 > 0)
+                {
+                    Ataque2 = Ataque2 - defen1;
+                    if (Ataque2 < 1)
+                    {
+                        Ataque2 = 1;
+                    }
+                    if (Ataque2 >= VidaGladiador1)
+                    {
+                        Ataque2 = VidaGladiador1;
+                        VidaGladiador1 = 0;
+                    }
+                    else
+                    {
+                        VidaGladiador1 = VidaGladiador1 - Ataque2;
+                    }
+                }
+                return Ataque2;
+            }
+        }
+
+        static void Main(string[] args)
+        {
+            int Modalidad = ModalidadFun();
+
+            string[] gladiadoresEq1 = new string[Modalidad];
+            string[] gladiadoresEq2 = new string[Modalidad];
+
+            int PV_equipo1_Total = 0;
+            string Nom_Equi1 = "";
+
+            string Gladiador1_Equi1 = "";
+            int Total_daño_Aa = 0;
+            int PV_A_a = 0;
+            int ATK_A_a = 0;
+            int DEF_A_a = 0;
+
+            string Gladiador2_Equi1 = "";
+            int Total_daño_Ab = 0;
+            int PV_A_b = 0;
+            int ATK_A_b = 0;
+            int DEF_A_b = 0;
+
+            string Gladiador3_Equi1 = "";
+            int Total_daño_Ac = 0;
+            int PV_A_c = 0;
+            int ATK_A_c = 0;
+            int DEF_A_c = 0;
+
+            string Gladiador4_Equi1 = "";
+            int Total_daño_Ad = 0;
+            int PV_A_d = 0;
+            int ATK_A_d = 0;
+            int DEF_A_d = 0;
+
+            string Gladiador5_Equi1 = "";
+            int Total_daño_Ae = 0;
+            int PV_A_e = 0;
+            int ATK_A_e = 0;
+            int DEF_A_e = 0;
+
+            string Nom_Equi2 = "";
+            int PV_equipo2_Total = 0;
+
+            string Gladiador1_Equi2 = "";
+            int Total_daño_Ba = 0;
+            int PV_B_a = 0;
+            int ATK_B_a = 0;
+            int DEF_B_a = 0;
+
+            string Gladiador2_Equi2 = "";
+            int Total_daño_Bb = 0;
+            int PV_B_b = 0;
+            int ATK_B_b = 0;
+            int DEF_B_b = 0;
+
+            string Gladiador3_Equi2 = "";
+            int Total_daño_Bc = 0;
+            int PV_B_c = 0;
+            int ATK_B_c = 0;
+            int DEF_B_c = 0;
+
+            string Gladiador4_Equi2 = "";
+            int Total_daño_Bd = 0;
+            int PV_B_d = 0;
+            int ATK_B_d = 0;
+            int DEF_B_d = 0;
+
+            string Gladiador5_Equi2 = "";
+            int Total_daño_Be = 0;
+            int PV_B_e = 0;
+            int ATK_B_e = 0;
+            int DEF_B_e = 0;
+
+            Console.WriteLine("Crea el equipo el jugador 1.");
+            Console.Write("Introduzca el nombre de su equipo: ");
+            string NombreEquipo1 = Console.ReadLine();
+            Nom_Equi1 = NombreEquipo1;
+
+            for (int i = 0; i < Modalidad; i++)
+            {
+                Console.Write("Introduzca el nombre del Gladiador {i + 1}: ");
+                gladiadoresEq1[i] = Console.ReadLine();
+                if (i == 0) Gladiador1_Equi1 = gladiadoresEq1[i];
+                if (i == 1) Gladiador2_Equi1 = gladiadoresEq1[i];
+                if (i == 2) Gladiador3_Equi1 = gladiadoresEq1[i];
+                if (i == 3) Gladiador4_Equi1 = gladiadoresEq1[i];
+                if (i == 4) Gladiador5_Equi1 = gladiadoresEq1[i];
+            }
+
+            Console.WriteLine("Crea el equipo el jugador 2.");
+            Console.Write("Introduzca el nombre de su equipo: ");
+            string NombreEquipo2 = Console.ReadLine();
+            Nom_Equi2 = NombreEquipo2;
+
+            for (int i = 0; i < Modalidad; i++)
+            {
+                Console.Write("Introduzca el nombre del Gladiador {i + 1}: ");
+                gladiadoresEq2[i] = Console.ReadLine();
+                if (i == 0) Gladiador1_Equi2 = gladiadoresEq2[i];
+                if (i == 1) Gladiador2_Equi2 = gladiadoresEq2[i];
+                if (i == 2) Gladiador3_Equi2 = gladiadoresEq2[i];
+                if (i == 3) Gladiador4_Equi2 = gladiadoresEq2[i];
+                if (i == 4) Gladiador5_Equi2 = gladiadoresEq2[i];
+            }
+
+            int MVP = 0;
+            int VidaGladiador1 = 20;
+            int VidaGladiador2 = 20;
+            int VidaMaxima = 25;
+            int Ataque1 = 15;
+            int Ataque2 = 15;
+            int defen1 = 5;
+            int defen2 = 5;
+
+            int modalidad = 0;
+
+            int[] pv1 = { 0, 0, 0, 0, 0 };
+            int[] atk1 = { 0, 0, 0, 0, 0 };
+            int[] def1 = { 0, 0, 0, 0, 0 };
+            int[] totalDano1 = { 0, 0, 0, 0, 0 };
+
+            int[] pv2 = { 0, 0, 0, 0, 0 };
+            int[] atk2 = { 0, 0, 0, 0, 0 };
+            int[] def2 = { 0, 0, 0, 0, 0 };
+            int[] totalDano2 = { 0, 0, 0, 0, 0 };
+
+            int j = 0;
+            for (int i = 1; i <= Modalidad; i++)
+            {
+                j = i - 1;
+                int ataque = 0;
+                int defensa = 0;
+                int vida = 0;
+                int auxiliar2 = 0;
+                int auxiliar1 = 0;
+                int cont_pts_2 = 40;
+                int cont_pts_1 = 40;
+                Console.WriteLine("==================== HORA DE DISTRIBUIR PUNTOS ====================");
+                Console.WriteLine();
+                Console.WriteLine("tienes 40 puntos exactos para distribuir los por cada gladiador");
+                Console.WriteLine();
+                Console.WriteLine();
+                do
+                {
+                    cont_pts_1 = 40;
+                    Console.WriteLine("Turno del equipo " + NombreEquipo1 + " de distribuir los puntos para " + gladiadoresEq1[j] + "");
+                    Console.WriteLine();
+                    Console.WriteLine();
+                    Console.Write("ataque: (5 min, 20 max): ");
+                    ataque = int.Parse(Console.ReadLine());
+                    while (ataque < 5 || ataque > 20)
+                    {
+                        Console.WriteLine();
+                        Console.Write("ataque: (5 min, 20 max): ");
+                        ataque = int.Parse(Console.ReadLine());
+                    }
+                    cont_pts_1 = cont_pts_1 - ataque;
+                    Console.WriteLine();
+                    Console.WriteLine("le quedan " + cont_pts_1 + " puntos");
+                    if (cont_pts_1 > 0)
+                    {
+                        Console.WriteLine("vida: (min 10, max 25): ");
+                        vida = int.Parse(Console.ReadLine());
+                        while (vida < 10 || vida > 25)
+                        {
+                            Console.WriteLine();
+                            Console.Write("vida: (min 10, max 25): ");
+                            vida = int.Parse(Console.ReadLine());
+                        }
+                        cont_pts_1 = cont_pts_1 - vida;
+                        Console.WriteLine();
+                        Console.WriteLine("le quedan " + cont_pts_1 + " puntos");
+                        if (cont_pts_1 > 0)
+                        {
+                            Console.WriteLine("defensa: (min 1, max 10): ");
+                            defensa = int.Parse(Console.ReadLine());
+                            while (defensa < 1 || defensa > 10)
+                            {
+                                Console.WriteLine();
+                                Console.Write("defensa: (min 1, max 10): ");
+                                defensa = int.Parse(Console.ReadLine());
+                            }
+                            cont_pts_1 = cont_pts_1 - defensa;
+                            if (cont_pts_1 == 0)
+                            {
+                                auxiliar1 = 1;
+                            }
+                            else
+                            {
+                                if (cont_pts_1 > 0)
+                                {
+                                    Console.WriteLine("");
+                                    Console.WriteLine("NO LLEGASTE A LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                    Console.WriteLine("");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("");
+                                    Console.WriteLine("SOBRE PASASTE LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                    Console.WriteLine("");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (cont_pts_1 > 0)
+                            {
+                                Console.WriteLine("");
+                                Console.WriteLine("NO LLEGASTE A LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                Console.WriteLine("");
+                            }
+                            else
+                            {
+                                Console.WriteLine("");
+                                Console.WriteLine("SOBRE PASASTE LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                Console.WriteLine("");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (cont_pts_1 > 0)
+                        {
+                            Console.WriteLine("");
+                            Console.WriteLine("NO LLEGASTE A LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                            Console.WriteLine("");
+                        }
+                        else
+                        {
+                            Console.WriteLine("");
+                            Console.WriteLine("SOBRE PASASTE LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                            Console.WriteLine("");
+                        }
+                    }
+
+                } while (auxiliar1 == 0);
+                Console.WriteLine("");
+                Console.WriteLine("Puntos distribuidos correctamente");
+                Console.WriteLine("");
+                pv1[j] = vida;
+                atk1[j] = ataque;
+                def1[j] = defensa;
+                if (j == 0)
+                {
+                    VidaGladiador1 = vida;
+                    Ataque1 = ataque;
+                    defen1 = defensa;
+                    PV_A_a = vida;
+                    ATK_A_a = ataque;
+                    DEF_A_a = defensa;
+                }
+                if (j == 1)
+                {
+                    PV_A_b = vida;
+                    ATK_A_b = ataque;
+                    DEF_A_b = defensa;
+                }
+
+                Console.WriteLine();
+                Console.WriteLine();
+                do
+                {
+                    cont_pts_2 = 40;
+                    Console.WriteLine("Turno del equipo " + NombreEquipo2 + " de distribuir los puntos para " + gladiadoresEq2[j] + "");
+                    Console.WriteLine();
+                    Console.Write("ataque: (5 min, 20 max): ");
+                    ataque = int.Parse(Console.ReadLine());
+                    while (ataque < 5 || ataque > 20)
+                    {
+                        Console.WriteLine();
+                        Console.Write("ataque: (5 min, 20 max): ");
+                        ataque = int.Parse(Console.ReadLine());
+                    }
+                    cont_pts_2 = cont_pts_2 - ataque;
+                    Console.WriteLine();
+                    Console.WriteLine("le quedan " + cont_pts_2 + " puntos");
+                    if (cont_pts_2 > 0)
+                    {
+                        Console.WriteLine();
+                        Console.WriteLine("vida: (min 10, max 25): ");
+                        vida = int.Parse(Console.ReadLine());
+                        while (vida < 10 || vida > 25)
+                        {
+                            Console.WriteLine();
+                            Console.Write("vida: (min 10, max 25): ");
+                            vida = int.Parse(Console.ReadLine());
+                        }
+                        cont_pts_2 = cont_pts_2 - vida;
+                        Console.WriteLine();
+                        Console.WriteLine("le quedan " + cont_pts_2 + " puntos");
+                        if (cont_pts_2 > 0)
+                        {
+                            Console.WriteLine();
+                            Console.WriteLine("defensa: (min 1, max 10): ");
+                            defensa = int.Parse(Console.ReadLine());
+                            while (defensa < 1 || defensa > 10)
+                            {
+                                Console.WriteLine();
+                                Console.Write("defensa: (min 1, max 10): ");
+                                defensa = int.Parse(Console.ReadLine());
+                            }
+                            cont_pts_2 = cont_pts_2 - defensa;
+                            if (cont_pts_2 == 0)
+                            {
+                                auxiliar2 = 1;
+                            }
+                            else
+                            {
+                                if (cont_pts_2 > 0)
+                                {
+                                    Console.WriteLine("");
+                                    Console.WriteLine("NO LLEGASTE A LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                    Console.WriteLine("");
+                                }
+                                else
+                                {
+                                    Console.WriteLine("");
+                                    Console.WriteLine("SOBRE PASASTE LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                    Console.WriteLine("");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (cont_pts_2 > 0)
+                            {
+                                Console.WriteLine("");
+                                Console.WriteLine("NO LLEGASTE A LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                Console.WriteLine("");
+                            }
+                            else
+                            {
+                                Console.WriteLine("");
+                                Console.WriteLine("SOBRE PASASTE LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                                Console.WriteLine("");
+                            }
+                        }
+                    }
+                    else
+                    {
+                        if (cont_pts_2 > 0)
+                        {
+                            Console.WriteLine("");
+                            Console.WriteLine("NO LLEGASTE A LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                            Console.WriteLine("");
+                        }
+                        else
+                        {
+                            Console.WriteLine("");
+                            Console.WriteLine("SOBRE PASASTE LA CANTIDAD DE PUNTOS PARA DISTRIBUIR PORFAVOR INTENTE DEVUELTA");
+                            Console.WriteLine("");
+                        }
+                    }
+
+                } while (auxiliar2 == 0);
+                Console.WriteLine("");
+                Console.WriteLine("");
+                Console.WriteLine("Puntos distribuidos correctamente");
+                Console.WriteLine("");
+                Console.WriteLine("");
+                pv2[j] = vida;
+                atk2[j] = ataque;
+                def2[j] = defensa;
+                if (j == 0)
+                {
+                    VidaGladiador2 = vida;
+                    Ataque2 = ataque;
+                    defen2 = defensa;
+                    PV_B_a = vida;
+                    ATK_B_a = ataque;
+                    DEF_B_a = defensa;
+                }
+                if (j == 1)
+                {
+                    PV_B_b = vida;
+                    ATK_B_b = ataque;
+                    DEF_B_b = defensa;
+                }
+            }
+
+            int turno = 1;
+            int contadorRecuperar = 0;
+
+            while ((Modalidad == 1 && PV_A_a > 0 && PV_B_a > 0) ||
+                   (Modalidad >= 2 && (PV_A_a > 0 || PV_A_b > 0) && (PV_B_a > 0 || PV_B_b > 0)))
+            {
+                if (turno % 2 == 0)
+                {
+                    Console.WriteLine("====================TURNO " + turno + "====================");
+                    Console.WriteLine("Turno de " + Nom_Equi2);
+                    Console.WriteLine("1. " + Gladiador1_Equi2 + " - HP = " + PV_B_a);
+                    if (Modalidad >= 2)
+                    {
+                        Console.WriteLine("2. " + Gladiador2_Equi2 + " - HP = " + PV_B_b);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("====================TURNO " + turno + "====================");
+                    Console.WriteLine("Turno de " + Nom_Equi1);
+                    Console.WriteLine();
+                    Console.WriteLine("1. " + Gladiador1_Equi1 + " - HP = " + PV_A_a);
+                    if (Modalidad >= 2)
+                    {
+                        Console.WriteLine("2. " + Gladiador2_Equi1 + " - HP = " + PV_A_b);
+                    }
+                }
+                Console.WriteLine("¿Que acción realiza? 1. Ataque 2. Recuperar vida");
+                int Accion = int.Parse(Console.ReadLine());
+                switch (Accion)
+                {
+                    case 1:
+                        Console.WriteLine("Seleccionó ATAQUE.");
+                        if (turno % 2 == 0)
+                        {
+                            int atacaNum = 1;
+                            if (Modalidad >= 2)
+                            {
+                                Console.WriteLine("¿Qué gladiador de " + Nom_Equi2 + " ataca? (1: " + Gladiador1_Equi2 + " / 2: " + Gladiador2_Equi2 + ")");
+                                atacaNum = int.Parse(Console.ReadLine());
+                                while ((atacaNum == 1 && PV_B_a <= 0) || (atacaNum == 2 && PV_B_b <= 0))
+                                {
+                                    if (atacaNum == 1 && PV_B_a <= 0)
+                                    {
+                                        Console.WriteLine("El jugador " + Gladiador1_Equi2 + " está fuera de combate e inhabilitado y no se lo puede usar más. Elija otro gladiador de su equipo.");
+                                    }
+                                    if (atacaNum == 2 && PV_B_b <= 0)
+                                    {
+                                        Console.WriteLine("El jugador " + Gladiador2_Equi2 + " está fuera de combate e inhabilitado y no se lo puede usar más. Elija otro gladiador de su equipo.");
+                                    }
+                                    Console.WriteLine("¿Qué gladiador de " + Nom_Equi2 + " ataca? (1: " + Gladiador1_Equi2 + " / 2: " + Gladiador2_Equi2 + ")");
+                                    atacaNum = int.Parse(Console.ReadLine());
+                                }
+                            }
+                            else
+                            {
+                                if (PV_B_a <= 0)
+                                {
+                                    Console.WriteLine("El jugador " + Gladiador1_Equi2 + " está fuera de combate e inhabilitado y no se lo puede usar más.");
+                                    break;
+                                }
+                            }
+
+                            int objetivoNum = 1;
+                            if (Modalidad >= 2)
+                            {
+                                Console.WriteLine("¿A quién del equipo rival (" + Nom_Equi1 + ") deseas atacar? (1: " + Gladiador1_Equi1 + " / 2: " + Gladiador2_Equi1 + ")");
+                                objetivoNum = int.Parse(Console.ReadLine());
+                                while ((objetivoNum == 1 && PV_A_a <= 0) || (objetivoNum == 2 && PV_A_b <= 0))
+                                {
+                                    if (objetivoNum == 1 && PV_A_a <= 0)
+                                    {
+                                        Console.WriteLine("No se le puede atacar a " + Gladiador1_Equi1 + " porque quedó fuera de combate e inhabilitado.");
+                                    }
+                                    if (objetivoNum == 2 && PV_A_b <= 0)
+                                    {
+                                        Console.WriteLine("No se le puede atacar a " + Gladiador2_Equi1 + " porque quedó fuera de combate e inhabilitado.");
+                                    }
+                                    Console.WriteLine("Elija a otro gladiador del equipo rival (" + Nom_Equi1 + ") que sí tenga vida: (1: " + Gladiador1_Equi1 + " / 2: " + Gladiador2_Equi1 + ")");
+                                    objetivoNum = int.Parse(Console.ReadLine());
+                                }
+                            }
+                            else
+                            {
+                                if (PV_A_a <= 0)
+                                {
+                                    Console.WriteLine("No se le puede atacar a " + Gladiador1_Equi1 + " porque quedó fuera de combate e inhabilitado.");
+                                    break;
+                                }
+                            }
+
+                            if (atacaNum == 1 && objetivoNum == 1)
+                            {
+                                int Vida_1antes = PV_A_a;
+                                PV_A_a = Ataque_ju1(ATK_B_a, ATK_A_a, PV_B_a, PV_A_a, DEF_B_a, DEF_A_a, turno);
+                                int Puntos = Vida_1antes - PV_A_a;
+                                if (PV_A_a == Vida_1antes)
+                                {
+                                    Puntos = Vida_1antes;
+                                    Vida_1antes = 0;
+                                    PV_A_a = 0;
+                                }
+                                Total_daño_Ba = Puntos + Total_daño_Ba;
+                                totalDano2[0] = Total_daño_Ba;
+                                Console.WriteLine("Ataca " + Gladiador1_Equi2 + " a " + Gladiador1_Equi1 + "...");
+                                Console.WriteLine();
+                                Console.WriteLine("Gladiador1 queda con " + PV_A_a + " puntos de vida.");
+                                Console.WriteLine("Gladiador2 suma " + Puntos + " puntos.");
+                                Console.WriteLine();
+                                if (PV_A_a == 0)
+                                {
+                                    Console.WriteLine("El jugador " + Gladiador1_Equi1 + " queda fuera de combate e inhabilitado y no se lo puede usar más.");
+                                }
+                            }
+                            else if (atacaNum == 1 && objetivoNum == 2 && Modalidad >= 2)
+                            {
+                                int Vida_3antes = PV_A_b;
+                                PV_A_b = Ataque_ju1(ATK_B_a, ATK_A_b, PV_B_a, PV_A_b, DEF_B_a, DEF_A_b, turno);
+                                int Puntos = Vida_3antes - PV_A_b;
+                                if (PV_A_b == Vida_3antes)
+                                {
+                                    Puntos = Vida_3antes;
+                                    Vida_3antes = 0;
+                                    PV_A_b = 0;
+                                }
+                                Total_daño_Ba = Puntos + Total_daño_Ba;
+                                totalDano2[0] = Total_daño_Ba;
+                                Console.WriteLine("Ataca " + Gladiador1_Equi2 + " a " + Gladiador2_Equi1 + "...");
+                                Console.WriteLine();
+                                Console.WriteLine("Gladiador2 queda con " + PV_A_b + " puntos de vida.");
+                                Console.WriteLine("Gladiador2 suma " + Puntos + " puntos.");
+                                Console.WriteLine();
+                                if (PV_A_b == 0)
+                                {
+                                    Console.WriteLine("El jugador " + Gladiador2_Equi1 + " queda fuera de combate e inhabilitado y no se lo puede usar más.");
+                                }
+                            }
+                            else if (atacaNum == 2 && objetivoNum == 1 && Modalidad >= 2)
+                            {
+                                int Vida_1antes = PV_A_a;
+                                PV_A_a = Ataque_ju1(ATK_B_b, ATK_A_a, PV_B_b, PV_A_a, DEF_B_b, DEF_A_a, turno);
+                                int Puntos = Vida_1antes - PV_A_a;
+                                if (PV_A_a == Vida_1antes)
+                                {
+                                    Puntos = Vida_1antes;
+                                    Vida_1antes = 0;
+                                    PV_A_a = 0;
+                                }
+                                Total_daño_Bb = Puntos + Total_daño_Bb;
+                                totalDano2[1] = Total_daño_Bb;
+                                Console.WriteLine("Ataca " + Gladiador2_Equi2 + " a " + Gladiador1_Equi1 + "...");
+                                Console.WriteLine();
+                                Console.WriteLine("Gladiador1 queda con " + PV_A_a + " puntos de vida.");
+                                Console.WriteLine("Gladiador2 suma " + Puntos + " puntos.");
+                                Console.WriteLine();
+                                if (PV_A_a == 0)
+                                {
+                                    Console.WriteLine("El jugador " + Gladiador1_Equi1 + " queda fuera de combate e inhabilitado y no se lo puede usar más.");
+                                }
+                            }
+                            else if (atacaNum == 2 && objetivoNum == 2 && Modalidad >= 2)
+                            {
+                                int Vida_3antes = PV_A_b;
+                                PV_A_b = Ataque_ju1(ATK_B_b, ATK_A_b, PV_B_b, PV_A_b, DEF_B_b, DEF_A_b, turno);
+                                int Puntos = Vida_3antes - PV_A_b;
+                                if (PV_A_b == Vida_3antes)
+                                {
+                                    Puntos = Vida_3antes;
+                                    Vida_3antes = 0;
+                                    PV_A_b = 0;
+                                }
+                                Total_daño_Bb = Puntos + Total_daño_Bb;
+                                totalDano2[1] = Total_daño_Bb;
+                                Console.WriteLine("Ataca " + Gladiador2_Equi2 + " a " + Gladiador2_Equi1 + "...");
+                                Console.WriteLine();
+                                Console.WriteLine("Gladiador2 queda con " + PV_A_b + " puntos de vida.");
+                                Console.WriteLine("Gladiador2 suma " + Puntos + " puntos.");
+                                Console.WriteLine();
+                                if (PV_A_b == 0)
+                                {
+                                    Console.WriteLine("El jugador " + Gladiador2_Equi1 + " queda fuera de combate e inhabilitado y no se lo puede usar más.");
+                                }
+                            }
+                        }
+                        else
+                        {
+                            int atacaNum = 1;
+                            if (Modalidad >= 2)
+                            {
+                                Console.WriteLine("¿Qué gladiador de " + Nom_Equi1 + " ataca? (1: " + Gladiador1_Equi1 + " / 2: " + Gladiador2_Equi1 + ")");
+                                atacaNum = int.Parse(Console.ReadLine());
+                                while ((atacaNum == 1 && PV_A_a <= 0) || (atacaNum == 2 && PV_A_b <= 0))
+                                {
+                                    if (atacaNum == 1 && PV_A_a <= 0)
+                                    {
+                                        Console.WriteLine("El jugador " + Gladiador1_Equi1 + " está fuera de combate e inhabilitado y no se lo puede usar más. Elija otro gladiador de su equipo.");
+                                    }
+                                    if (atacaNum == 2 && PV_A_b <= 0)
+                                    {
+                                        Console.WriteLine("El jugador " + Gladiador2_Equi1 + " está fuera de combate e inhabilitado y no se lo puede usar más. Elija otro gladiador de su equipo.");
+                                    }
+                                    Console.WriteLine("¿Qué gladiador de " + Nom_Equi1 + " ataca? (1: " + Gladiador1_Equi1 + " / 2: " + Gladiador2_Equi1 + ")");
+                                    atacaNum = int.Parse(Console.ReadLine());
+                                }
+                            }
+                            else
+                            {
+                                if (PV_A_a <= 0)
+                                {
+                                    Console.WriteLine("El jugador " + Gladiador1_Equi1 + " está fuera de combate e inhabilitado y no se lo puede usar más.");
+                                    break;
+                                }
+                            }
+
+                            int objetivoNum = 1;
+                            if (Modalidad >= 2)
+                            {
+                                Console.WriteLine("¿A quién del equipo rival (" + Nom_Equi2 + ") deseas atacar? (1: " + Gladiador1_Equi2 + " / 2: " + Gladiador2_Equi2 + ")");
+                                objetivoNum = int.Parse(Console.ReadLine());
+                                while ((objetivoNum == 1 && PV_B_a <= 0) || (objetivoNum == 2 && PV_B_b <= 0))
+                                {
+                                    if (objetivoNum == 1 && PV_B_a <= 0)
+                                    {
+                                        Console.WriteLine("No se le puede atacar a " + Gladiador1_Equi2 + " porque quedó fuera de combate e inhabilitado.");
+                                    }
+                                    if (objetivoNum == 2 && PV_B_b <= 0)
+                                    {
+                                        Console.WriteLine("No se le puede atacar a " + Gladiador2_Equi2 + " porque quedó fuera de combate e inhabilitado.");
+                                    }
+                                    Console.WriteLine("Elija a otro gladiador del equipo rival (" + Nom_Equi2 + ") que sí tenga vida: (1: " + Gladiador1_Equi2 + " / 2: " + Gladiador2_Equi2 + ")");
+                                    objetivoNum = int.Parse(Console.ReadLine());
+                                }
+                            }
+                            else
+                            {
+                                if (PV_B_a <= 0)
+                                {
+                                    Console.WriteLine("No se le puede atacar a " + Gladiador1_Equi2 + " porque quedó fuera de combate e inhabilitado.");
+                                    break;
+                                }
+                            }
+
+                            if (atacaNum == 1 && objetivoNum == 1)
+                            {
+                                int Vida_2antes = PV_B_a;
+                                PV_B_a = Ataque_ju1(ATK_A_a, ATK_B_a, PV_B_a, PV_A_a, DEF_A_a, DEF_B_a, turno);
+                                int Puntos = Vida_2antes - PV_B_a;
+                                if (PV_B_a == Vida_2antes)
+                                {
+                                    Puntos = Vida_2antes;
+                                    Vida_2antes = 0;
+                                    PV_B_a = 0;
+                                }
+                                Total_daño_Aa = Puntos + Total_daño_Aa;
+                                totalDano1[0] = Total_daño_Aa;
+                                Console.WriteLine("Ataca " + Gladiador1_Equi1 + " a " + Gladiador1_Equi2 + "...");
+                                Console.WriteLine();
+                                Console.WriteLine("Gladiador2 queda con " + PV_B_a + " puntos de vida.");
+                                Console.WriteLine("Gladiador1 suma " + Puntos + " puntos.");
+                                Console.WriteLine();
+                                if (PV_B_a == 0)
+                                {
+                                    Console.WriteLine("El jugador " + Gladiador1_Equi2 + " queda fuera de combate e inhabilitado y no se lo puede usar más.");
+                                }
+                            }
+                            else if (atacaNum == 1 && objetivoNum == 2 && Modalidad >= 2)
+                            {
+                                int Vida_4antes = PV_B_b;
+                                PV_B_b = Ataque_ju1(ATK_A_a, ATK_B_b, PV_B_b, PV_A_a, DEF_A_a, DEF_B_b, turno);
+                                int Puntos = Vida_4antes - PV_B_b;
+                                if (PV_B_b == Vida_4antes)
+                                {
+                                    Puntos = Vida_4antes;
+                                    Vida_4antes = 0;
+                                    PV_B_b = 0;
+                                }
+                                Total_daño_Aa = Puntos + Total_daño_Aa;
+                                totalDano1[0] = Total_daño_Aa;
+                                Console.WriteLine("Ataca " + Gladiador1_Equi1 + " a " + Gladiador2_Equi2 + "...");
+                                Console.WriteLine();
+                                Console.WriteLine("Gladiador2 queda con " + PV_B_b + " puntos de vida.");
+                                Console.WriteLine("Gladiador1 suma " + Puntos + " puntos.");
+                                Console.WriteLine();
+                                if (PV_B_b == 0)
+                                {
+                                    Console.WriteLine("El jugador " + Gladiador2_Equi2 + " queda fuera de combate e inhabilitado y no se lo puede usar más.");
+                                }
+                            }
+                            else if (atacaNum == 2 && objetivoNum == 1 && Modalidad >= 2)
+                            {
+                                int Vida_2antes = PV_B_a;
+                                PV_B_a = Ataque_ju1(ATK_A_b, ATK_B_a, PV_B_a, PV_A_b, DEF_A_b, DEF_B_a, turno);
+                                int Puntos = Vida_2antes - PV_B_a;
+                                if (PV_B_a == Vida_2antes)
+                                {
+                                    Puntos = Vida_2antes;
+                                    Vida_2antes = 0;
+                                    PV_B_a = 0;
+                                }
+                                Total_daño_Ab = Puntos + Total_daño_Ab;
+                                totalDano1[1] = Total_daño_Ab;
+                                Console.WriteLine("Ataca " + Gladiador2_Equi1 + " a " + Gladiador1_Equi2 + "...");
+                                Console.WriteLine();
+                                Console.WriteLine("Gladiador2 queda con " + PV_B_a + " puntos de vida.");
+                                Console.WriteLine("Gladiador1 suma " + Puntos + " puntos.");
+                                Console.WriteLine();
+                                if (PV_B_a == 0)
+                                {
+                                    Console.WriteLine("El jugador " + Gladiador1_Equi2 + " queda fuera de combate e inhabilitado y no se lo puede usar más.");
+                                }
+                            }
+                            else if (atacaNum == 2 && objetivoNum == 2 && Modalidad >= 2)
+                            {
+                                int Vida_4antes = PV_B_b;
+                                PV_B_b = Ataque_ju1(ATK_A_b, ATK_B_b, PV_B_b, PV_A_b, DEF_A_b, DEF_B_b, turno);
+                                int Puntos = Vida_4antes - PV_B_b;
+                                if (PV_B_b == Vida_4antes)
+                                {
+                                    Puntos = Vida_4antes;
+                                    Vida_4antes = 0;
+                                    PV_B_b = 0;
+                                }
+                                Total_daño_Ab = Puntos + Total_daño_Ab;
+                                totalDano1[1] = Total_daño_Ab;
+                                Console.WriteLine("Ataca " + Gladiador2_Equi1 + " a " + Gladiador2_Equi2 + "...");
+                                Console.WriteLine();
+                                Console.WriteLine("Gladiador2 queda con " + PV_B_b + " puntos de vida.");
+                                Console.WriteLine("Gladiador1 suma " + Puntos + " puntos.");
+                                Console.WriteLine();
+                                if (PV_B_b == 0)
+                                {
+                                    Console.WriteLine("El jugador " + Gladiador2_Equi2 + " queda fuera de combate e inhabilitado y no se lo puede usar más.");
+                                }
+                            }
+                        }
+                        break;
+
+                    case 2:
+                        {
+                            if (contadorRecuperar <= 2)
+                            {
+                                contadorRecuperar++;
+                                int VidaCurada = RecuperarVida(PV_A_a, PV_B_a, VidaMaxima, turno);
+                                if (turno % 2 == 0)
+                                {
+                                    PV_B_a = VidaCurada;
+                                }
+                                else
+                                {
+                                    PV_A_a = VidaCurada;
+                                }
+                                Console.WriteLine("La vida del gladiador ahora es de " + VidaCurada + " puntos de vida.");
+                                break;
+                            }
+                            else
+                            {
+                                Console.WriteLine("Un gladiador no puede recuperar vida más de dos veces por combate.");
+                                break;
+                            }
+                        }
+
+                    default:
+                        Console.WriteLine("Opción no válida. Intente de nuevo.");
+                        break;
+                }
+                turno++;
+            }
+
+            int turnosTotales = turno - 1;
+            PV_equipo1_Total = PV_A_a;
+            PV_equipo2_Total = PV_B_a;
+            if (Modalidad >= 2)
+            {
+                PV_equipo1_Total = PV_A_a + PV_A_b;
+                PV_equipo2_Total = PV_B_a + PV_B_b;
+            }
+
+            Console.WriteLine("====================GAME OVER====================");
+            if (PV_equipo1_Total > 0)
+            {
+                Console.WriteLine("El combate ha acabado... Ganan " + Nom_Equi1 + " en " + turnosTotales + " turnos.");
+            }
+            else
+            {
+                Console.WriteLine("El combate ha acabado... Ganan " + Nom_Equi2 + " en " + turnosTotales + " turnos.");
+            }
+
+            MVP = Total_daño_Aa;
+            string nombreMVP = Gladiador1_Equi1;
+            if (Modalidad >= 2 && Total_daño_Ab > MVP)
+            {
+                MVP = Total_daño_Ab;
+                nombreMVP = Gladiador2_Equi1;
+            }
+            if (Total_daño_Ba > MVP)
+            {
+                MVP = Total_daño_Ba;
+                nombreMVP = Gladiador1_Equi2;
+            }
+            if (Modalidad >= 2 && Total_daño_Bb > MVP)
+            {
+                MVP = Total_daño_Bb;
+                nombreMVP = Gladiador2_Equi2;
+            }
+            Console.WriteLine("MVP del torneo (" + MVP + " de daño causado): " + nombreMVP);
+
+            if (PV_equipo1_Total > 0)
+            {
+                double promedio = PV_A_a;
+                int enPie = 0;
+                if (PV_A_a > 0)
+                {
+                    enPie = enPie + 1;
+                }
+                if (Modalidad >= 2)
+                {
+                    promedio = (PV_A_a + PV_A_b) / 2.0;
+                    if (PV_A_b > 0)
+                    {
+                        enPie = enPie + 1;
+                    }
+                }
+                Console.WriteLine("Promedio de vida restante de " + Nom_Equi1 + ": " + promedio.ToString("0.00") + " (sobrevivientes: " + enPie + " de " + Modalidad + ")");
+            }
+            else
+            {
+                double promedio = PV_B_a;
+                int enPie = 0;
+                if (PV_B_a > 0)
+                {
+                    enPie = enPie + 1;
+                }
+                if (Modalidad >= 2)
+                {
+                    promedio = (PV_B_a + PV_B_b) / 2.0;
+                    if (PV_B_b > 0)
+                    {
+                        enPie = enPie + 1;
+                    }
+                }
+                Console.WriteLine("Promedio de vida restante de " + Nom_Equi2 + ": " + promedio.ToString("0.00") + " (sobrevivientes: " + enPie + " de " + Modalidad + ")");
+            }
+
+            string estadogla1;
+            if (PV_A_a > 0)
+            {
+                estadogla1 = "de pie";
+            }
+            else
+            {
+                estadogla1 = "fuera de combate";
+            }
+
+            string estadogla2;
+            if (PV_B_a > 0)
+            {
+                estadogla2 = "de pie";
+            }
+            else
+            {
+                estadogla2 = "fuera de combate";
+            }
+
+            Console.WriteLine();
+            Console.WriteLine("Equipo: " + Nom_Equi1 + "     " + "NOMBRE: " + Gladiador1_Equi1 + "     " + "VIDA: " + PV_A_a + "/" + VidaMaxima + "     " + "ATQ: " + ATK_A_a + "     " + "DEF: " + DEF_A_a + "     " + "DAÑO CAUSADO: " + Total_daño_Aa + "     " + "ESTADO: " + estadogla1);
+            if (Modalidad >= 2)
+            {
+                string estadogla3;
+                if (PV_A_b > 0)
+                {
+                    estadogla3 = "de pie";
+                }
+                else
+                {
+                    estadogla3 = "fuera de combate";
+                }
+                Console.WriteLine("Equipo: " + Nom_Equi1 + "     " + "NOMBRE: " + Gladiador2_Equi1 + "     " + "VIDA: " + PV_A_b + "/" + VidaMaxima + "     " + "ATQ: " + ATK_A_b + "     " + "DEF: " + DEF_A_b + "     " + "DAÑO CAUSADO: " + Total_daño_Ab + "     " + "ESTADO: " + estadogla3);
+            }
+            Console.WriteLine("Equipo: " + Nom_Equi2 + "     " + "NOMBRE: " + Gladiador1_Equi2 + "     " + "VIDA: " + PV_B_a + "/" + VidaMaxima + "     " + "ATQ: " + ATK_B_a + "     " + "DEF: " + DEF_B_a + "     " + "DAÑO CAUSADO: " + Total_daño_Ba + "     " + "ESTADO: " + estadogla2);
+            if (Modalidad >= 2)
+            {
+                string estadogla4;
+                if (PV_B_b > 0)
+                {
+                    estadogla4 = "de pie";
+                }
+                else
+                {
+                    estadogla4 = "fuera de combate";
+                }
+                Console.WriteLine("Equipo: " + Nom_Equi2 + "     " + "NOMBRE: " + Gladiador2_Equi2 + "     " + "VIDA: " + PV_B_b + "/" + VidaMaxima + "     " + "ATQ: " + ATK_B_b + "     " + "DEF: " + DEF_B_b + "     " + "DAÑO CAUSADO: " + Total_daño_Bb + "     " + "ESTADO: " + estadogla4);
+            }
+        }
+    }
+}
