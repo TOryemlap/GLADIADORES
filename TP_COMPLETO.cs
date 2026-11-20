@@ -136,7 +136,7 @@ namespace ConsoleApplication3
             // ---EQUIPO 1---
             int[] pv1 = { 0, 0, 0, 0, 0 };
             int[] atk1 = { 0, 0, 0, 0, 0 };
-            int[] def1 = { 0, 0, 0, 0, 0};
+            int[] def1 = { 0, 0, 0, 0, 0 };
             int[] totalDano1 = { 0, 0, 0, 0, 0 };
 
             //EQUIPO 2
@@ -371,10 +371,31 @@ namespace ConsoleApplication3
             int contadorRecuperar = 0;
             while (VidaGladiador1 > 0 && VidaGladiador2 > 0)
             {
-                if (turno % 2 == 0)
+                if (turno % 2 == 0 && modalidad > 1)
                 {
                     Console.WriteLine("====================TURNO " + turno + "====================");
-                    Console.WriteLine("Turno de " + gladiadoresEq2[0]);
+                    Console.WriteLine("Turno de " + NombreEquipo2);
+                    Console.WriteLine("¿Que gladiador elegis?");
+                    int GladiadorElegido = int.Parse(Console.ReadLine());
+                    switch (GladiadorElegido)
+                    {
+                        case 1:
+                            Console.WriteLine("Turno de " + gladiadoresEq2[0]);
+                            PV_GladiadorActivo = pv2[0];
+                            break;
+                        case 2:
+                            Console.WriteLine("Turno de " + gladiadoresEq2[1]);
+                            break;
+                        case 3:
+                            Console.WriteLine("Turno de " + gladiadoresEq2[2]);
+                            break;
+                        case 4:
+                            Console.WriteLine("Turno de " + gladiadoresEq2[3]);
+                            break;
+                        case 5:
+                            Console.WriteLine("Turno de " + gladiadoresEq2[4]);
+                            break;
+                    }
                     Console.WriteLine("HP = " + VidaGladiador2);
                 }
                 else
@@ -421,7 +442,7 @@ namespace ConsoleApplication3
                                 VidaGladiador2 = 0;
                             }
                             totalDano1[0] = Puntos + totalDano1[0];
-                            Console.WriteLine("Ataca " + gladiadoresEq1[0   ] + "...");
+                            Console.WriteLine("Ataca " + gladiadoresEq1[0] + "...");
                             Console.WriteLine();
                             Console.WriteLine("Gladiador2 queda con " + VidaGladiador2 + " puntos de vida.");
                             Console.WriteLine("Gladiador1 suma " + Puntos + " puntos.");
