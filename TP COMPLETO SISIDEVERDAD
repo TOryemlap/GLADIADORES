@@ -269,10 +269,10 @@ namespace ConsoleApplication3
                             {
                                 do
                                 {
-                                    Console.Write("Que gladiador elige?: ");
+                                    Console.WriteLine("Que gladiador elige?: ");
                                     for (j = 0; j < Modalidad; j++)
                                     {
-                                        Console.Write((j + 1) + ". " + gladiadoresEq2[j] + " - HP = " + pv2[j] + " ");
+                                        Console.WriteLine((j + 1) + ". " + gladiadoresEq2[j] + " - HP = " + pv2[j] + " ");
                                     }
                                     Console.WriteLine();
                                     GladiadorEleg = int.Parse(Console.ReadLine());
@@ -286,10 +286,10 @@ namespace ConsoleApplication3
                             {
                                 do
                                 {
-                                    Console.Write("Que gladiador elige?: ");
+                                    Console.WriteLine("Que gladiador elige?: ");
                                     for (j = 0; j < Modalidad; j++)
                                     {
-                                        Console.Write((j + 1) + ". " + gladiadoresEq1[j] + " - HP = " + pv1[j] + " ");
+                                        Console.WriteLine((j + 1) + ". " + gladiadoresEq1[j] + " - HP = " + pv1[j] + " ");
                                     }
                                     Console.WriteLine();
                                     GladiadorEleg = int.Parse(Console.ReadLine());
@@ -387,10 +387,10 @@ namespace ConsoleApplication3
                                         {
                                             do
                                             {
-                                                Console.Write("¿A quién del equipo rival (" + NombreEquipo1 + ") deseas atacar? ");
+                                                Console.WriteLine("¿A quién del equipo rival (" + NombreEquipo1 + ") deseas atacar? ");
                                                 for (j = 0; j < Modalidad; j++)
                                                 {
-                                                    Console.Write((j + 1) + ": " + gladiadoresEq1[j] + " - HP = " + pv1[j] + " ");
+                                                    Console.WriteLine((j + 1) + ": " + gladiadoresEq1[j] + " - HP = " + pv1[j] + " ");
                                                 }
                                                 Console.WriteLine();
                                                 objetivoNum = int.Parse(Console.ReadLine());
@@ -404,10 +404,10 @@ namespace ConsoleApplication3
                                         {
                                             do
                                             {
-                                                Console.Write("¿A quién del equipo rival (" + NombreEquipo2 + ") deseas atacar? ");
+                                                Console.WriteLine("¿A quién del equipo rival (" + NombreEquipo2 + ") deseas atacar? ");
                                                 for (j = 0; j < Modalidad; j++)
                                                 {
-                                                    Console.Write((j + 1) + ": " + gladiadoresEq2[j] + " - HP = " + pv2[j] + " ");
+                                                    Console.WriteLine((j + 1) + ": " + gladiadoresEq2[j] + " - HP = " + pv2[j] + " ");
                                                 }
                                                 Console.WriteLine();
                                                 objetivoNum = int.Parse(Console.ReadLine());
