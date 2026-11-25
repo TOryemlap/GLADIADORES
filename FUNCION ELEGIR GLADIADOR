@@ -1,0 +1,166 @@
+static int ElegirGladiador(pv1, pv2, atk1, atk2, gladiadoresEq1, gladiadoresEq2, modalidad, turno)
+        {
+            if (Modalidad == 2)
+            {
+                if (turno % 2 == 0)
+                {
+                    Console.WriteLine("Que gladiador elige?: 1. " + gladiadoresEq2[0] + "2. " gladiadoresEq2[1]);
+                    int GladiadorEleg = int.Parse(Console.ReadLine());
+                    switch (GladiadorEleg)
+                    {
+                        case 1:
+                            PvSelect = pv2[0];
+                            atkSelect = atk2[0];
+                            defSelect = def2[0];
+                            break;
+
+                        case 2:
+                            PvSelect = pv2[1];
+                            atkSelect = atk2[1];
+                            defSelect = def2[1];
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Que gladiador elige?: 1. " + gladiadoresEq1[0] + "2. " gladiadoresEq1[1]);
+                    int GladiadorEleg = int.Parse(Console.ReadLine());
+                    switch (GladiadorEleg)
+                    {
+                        case 1:
+                            PvSelect = pv1[0];
+                            atkSelect = atk1[0];
+                            defSelect = def1[0];
+                            break;
+
+                        case 2:
+                            PvSelect = pv1[1];
+                            atkSelect = atk1[1];
+                            defSelect = def1[1];
+                            break;
+                    }
+                }
+            }
+            if (Modalidad == 3)
+            {
+                if (turno % 2 == 0)
+                {
+                    Console.WriteLine("Que gladiador elige?: 1. " + gladiadoresEq2[0] + "2. " gladiadoresEq2[1] + "3. " gladiadoresEq2[2]);
+                    int GladiadorEleg = int.Parse(Console.ReadLine());
+                    switch (GladiadorEleg)
+                    {
+                        case 1:
+                            PvSelect = pv2[0];
+                            atkSelect = atk2[0];
+                            defSelect = def2[0];
+                            break;
+
+                        case 2:
+                            PvSelect = pv2[1];
+                            atkSelect = atk2[1];
+                            defSelect = def2[1];
+                            break;
+                        case 3:
+                            PvSelect = pv2[2];
+                            atkSelect = atk2[2];
+                            defSelect = def2[2];
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Que gladiador elige?: 1. " + gladiadoresEq1[0] + "2. " gladiadoresEq1[1] + "3. " gladiadoresEq1[2]);
+                    int GladiadorEleg = int.Parse(Console.ReadLine());
+                    switch (GladiadorEleg)
+                    {
+                        case 1:
+                            PvSelect = pv1[0];
+                            atkSelect = atk1[0];
+                            defSelect = def1[0];
+                            break;
+
+                        case 2:
+                            PvSelect = pv1[1];
+                            atkSelect = atk1[1];
+                            defSelect = def1[1];
+                            break;
+                        case 3:
+                            PvSelect = pv1[2];
+                            atkSelect = atk1[2];
+                            defSelect = def1[2];
+                            break;
+                    }
+                }
+            }
+            if (Modalidad == 5)
+            {
+                if (turno % 2 == 0)
+                {
+                    Console.WriteLine("Que gladiador elige?: 1. " + gladiadoresEq2[0] + "2. " gladiadoresEq2[1] + "3. " gladiadoresEq2[2] + "4. " gladiadoresEq2[3] + "5. " gladiadoresEq2[4]);
+                    int GladiadorEleg = int.Parse(Console.ReadLine());
+                    switch (GladiadorEleg)
+                    {
+                        case 1:
+                            PvSelect = pv2[0];
+                            atkSelect = atk2[0];
+                            defSelect = def2[0];
+                            break;
+
+                        case 2:
+                            PvSelect = pv2[1];
+                            atkSelect = atk2[1];
+                            defSelect = def2[1];
+                            break;
+                        case 3:
+                            PvSelect = pv2[2];
+                            atkSelect = atk2[2];
+                            defSelect = def2[2];
+                            break;
+                        case 4:
+                            PvSelect = pv2[3];
+                            atkSelect = atk2[3];
+                            defSelect = def2[3];
+                            break;
+                        case 5:
+                            PvSelect = pv2[4];
+                            atkSelect = atk2[4];
+                            defSelect = def2[4];
+                            break;
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Que gladiador elige?: 1. " + gladiadoresEq1[0] + "2. " gladiadoresEq1[1] + "3. " gladiadoresEq1[2] + "4. " gladiadoresEq1[3] + "5. " gladiadoresEq1[4]);
+                    int GladiadorEleg = int.Parse(Console.ReadLine());
+                    switch (GladiadorEleg)
+                    {
+                        case 1:
+                            PvSelect = pv1[0];
+                            atkSelect = atk1[0];
+                            defSelect = def1[0];
+                            break;
+
+                        case 2:
+                            PvSelect = pv1[1];
+                            atkSelect = atk1[1];
+                            defSelect = def1[1];
+                            break;
+                        case 3:
+                            PvSelect = pv1[2];
+                            atkSelect = atk1[2];
+                            defSelect = def1[2];
+                            break;
+                        case 4:
+                            PvSelect = pv1[3];
+                            atkSelect = atk1[3];
+                            defSelect = def1[3];
+                            break;
+                        case 5:
+                            PvSelect = pv1[4];
+                            atkSelect = atk1[4];
+                            defSelect = def1[4];
+                            break;
+                    }
+                }
+            }
+        }
