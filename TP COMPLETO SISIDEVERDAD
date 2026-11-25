@@ -92,7 +92,6 @@ namespace ConsoleApplication3
             int[] def2 = { 0, 0, 0, 0, 0 };
             int[] totalDano2 = { 0, 0, 0, 0, 0 };
             int[] curas2 = { 0, 0, 0, 0, 0 };
-
             int j = 0;
             for (int i = 1; i <= Modalidad; i++)
             {
@@ -239,7 +238,13 @@ namespace ConsoleApplication3
                 atk2[j] = ataque;
                 def2[j] = defensa;
             }
-
+            int[] pvmax1 = { 0, 0, 0, 0, 0 };
+            int[] pvmax2 = { 0, 0, 0, 0, 0 };
+            for (int i = 0; i < Modalidad; i++)
+            {
+                pvmax1[i] = pv1[i];
+                pvmax2[i] = pv2[i];
+            }
             if (Modalidad == 1 || Modalidad == 2 || Modalidad == 3 || Modalidad == 5)
             {
                 int turno = 1;
@@ -545,8 +550,8 @@ namespace ConsoleApplication3
                     {
                         estadogla2 = "fuera de combate";
                     }
-                    Console.WriteLine("Equipo: " + NombreEquipo1 + "     " + "NOMBRE: " + gladiadoresEq1[j] + "     " + "VIDA: " + pv1[j] + "     " + "ATQ: " + atk1[j] + "     " + "DEF: " + def1[j] + "     " + "DAÑO CAUSADO: " + totalDano1[j] + "     " + "ESTADO: " + estadogla1 + "");
-                    Console.WriteLine("Equipo: " + NombreEquipo2 + "     " + "NOMBRE: " + gladiadoresEq2[j] + "     " + "VIDA: " + pv2[j] + "     " + "ATQ: " + atk2[j] + "     " + "DEF: " + def2[j] + "     " + "DAÑO CAUSADO: " + totalDano2[j] + "     " + "ESTADO: " + estadogla2 + "");
+                    Console.WriteLine("Equipo: " + NombreEquipo1 + "     " + "NOMBRE: " + gladiadoresEq1[j] + "     " + "VIDA: " + pv1[j] + "/" + pvmax1[j] + "     " + "ATQ: " + atk1[j] + "     " + "DEF: " + def1[j] + "     " + "DAÑO CAUSADO: " + totalDano1[j] + "     " + "ESTADO: " + estadogla1 + "");
+                    Console.WriteLine("Equipo: " + NombreEquipo2 + "     " + "NOMBRE: " + gladiadoresEq2[j] + "     " + "VIDA: " + pv2[j] + "/" + pvmax2[j] + "     " + "ATQ: " + atk2[j] + "     " + "DEF: " + def2[j] + "     " + "DAÑO CAUSADO: " + totalDano2[j] + "     " + "ESTADO: " + estadogla2 + "");
                 }
             }
         }
