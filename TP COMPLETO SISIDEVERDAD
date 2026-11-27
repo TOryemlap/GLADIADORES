@@ -80,18 +80,18 @@ namespace ConsoleApplication3
             int MVP = 0;
             int VidaMaxima = 25;
 
-            int[] pv1 = {0, 0, 0, 0, 0};
-            int[] atk1 = {0, 0, 0, 0, 0};
-            int[] def1 = {0, 0, 0, 0, 0};
-            int[] totalDaño1 = {0, 0, 0, 0, 0};
-            int[] curas1 = {0, 0, 0, 0, 0};
+            int[] pv1 = { 0, 0, 0, 0, 0 };
+            int[] atk1 = { 0, 0, 0, 0, 0 };
+            int[] def1 = { 0, 0, 0, 0, 0 };
+            int[] totalDaño1 = { 0, 0, 0, 0, 0 };
+            int[] curas1 = { 0, 0, 0, 0, 0 };
             int[] vidaguardada1 = { 0, 0, 0, 0, 0 };
 
-            int[] pv2 = {0, 0, 0, 0, 0};
-            int[] atk2 = {0, 0, 0, 0, 0};
-            int[] def2 = {0, 0, 0, 0, 0};
-            int[] totalDaño2 = {0, 0, 0, 0, 0};
-            int[] curas2 = {0, 0, 0, 0, 0};
+            int[] pv2 = { 0, 0, 0, 0, 0 };
+            int[] atk2 = { 0, 0, 0, 0, 0 };
+            int[] def2 = { 0, 0, 0, 0, 0 };
+            int[] totalDaño2 = { 0, 0, 0, 0, 0 };
+            int[] curas2 = { 0, 0, 0, 0, 0 };
             int[] vidaguardada2 = { 0, 0, 0, 0, 0 };
             int j = 0;
             for (int i = 1; i <= Modalidad; i++)
@@ -545,33 +545,38 @@ namespace ConsoleApplication3
                     Console.WriteLine();
                     string estadogla1 = "";
                     string estadogla2 = "";
+                    int o = 0;
+                    int u = 0;
                     for (j = 0; j < Modalidad; j++)
                     {
-                        if (pv1[j] > 0)
-                        {
-                            estadogla1 = "de pie";
-                        }
-                        else
-                        {
-                            estadogla1 = "fuera de combate";
-                        }
-                        if (pv2[j] > 0)
-                        {
-                            estadogla2 = "de pie";
-                        }
-                        else
-                        {
-                            estadogla2 = "fuera de combate";
-                        }
                         for (j = 0; j < Modalidad; j++)
                         {
+                            if (pv1[o] > 0)
+                            {
+                                estadogla1 = "de pie";
+                            }
+                            else
+                            {
+                                estadogla1 = "fuera de combate";
+                            }
                             Console.WriteLine("Equipo: " + NombreEquipo1 + "     " + "NOMBRE: " + gladiadoresEq1[j] + "     " + "VIDA: " + pv1[j] + "/" + pvmax1[j] + "     " + "ATQ: " + atk1[j] + "     " + "DEF: " + def1[j] + "     " + "DAÑO CAUSADO: " + totalDaño1[j] + "     " + "ESTADO: " + estadogla1 + "");
+                            o++;
                         }
                         for (j = 0; j < Modalidad; j++)
                         {
-                            Console.WriteLine("Equipo: " + NombreEquipo2 + "     " + "NOMBRE: " + gladiadoresEq2[j] + "     " + "VIDA: " + pv2[j] + "/" + pvmax2[j] + "     " + "ATQ: " + atk2[j] + "     " + "DEF: " + def2[j] + "     " + "DAÑO CAUSADO: " + totalDaño2[j] + "     " + "ESTADO: " + estadogla2 + "");
 
+                            if (pv2[u] > 0)
+                            {
+                                estadogla2 = "de pie";
+                            }
+                            else
+                            {
+                                estadogla2 = "fuera de combate";
+                            }
+                            Console.WriteLine("Equipo: " + NombreEquipo2 + "     " + "NOMBRE: " + gladiadoresEq2[j] + "     " + "VIDA: " + pv2[j] + "/" + pvmax2[j] + "     " + "ATQ: " + atk2[j] + "     " + "DEF: " + def2[j] + "     " + "DAÑO CAUSADO: " + totalDaño2[j] + "     " + "ESTADO: " + estadogla2 + "");
+                            u++;
                         }
+                        
                     }
                 }
                 Console.WriteLine("desea una revancha?: 1) si 2) no ");
