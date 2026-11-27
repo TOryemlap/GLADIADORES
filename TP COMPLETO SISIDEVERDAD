@@ -81,17 +81,17 @@ namespace ConsoleApplication3
             int MVP = 0;
             int VidaMaxima = 25;
 
-            int[] pv1 = { 0, 0, 0, 0, 0 };
-            int[] atk1 = { 0, 0, 0, 0, 0 };
-            int[] def1 = { 0, 0, 0, 0, 0 };
-            int[] totalDano1 = { 0, 0, 0, 0, 0 };
-            int[] curas1 = { 0, 0, 0, 0, 0 };
+            int[] pv1 = {0, 0, 0, 0, 0};
+            int[] atk1 = {0, 0, 0, 0, 0};
+            int[] def1 = {0, 0, 0, 0, 0};
+            int[] totalDaño1 = {0, 0, 0, 0, 0};
+            int[] curas1 = {0, 0, 0, 0, 0};
 
-            int[] pv2 = { 0, 0, 0, 0, 0 };
-            int[] atk2 = { 0, 0, 0, 0, 0 };
-            int[] def2 = { 0, 0, 0, 0, 0 };
-            int[] totalDano2 = { 0, 0, 0, 0, 0 };
-            int[] curas2 = { 0, 0, 0, 0, 0 };
+            int[] pv2 = {0, 0, 0, 0, 0};
+            int[] atk2 = {0, 0, 0, 0, 0};
+            int[] def2 = {0, 0, 0, 0, 0};
+            int[] totalDaño2 = {0, 0, 0, 0, 0};
+            int[] curas2 = {0, 0, 0, 0, 0};
             int j = 0;
             for (int i = 1; i <= Modalidad; i++)
             {
@@ -427,7 +427,7 @@ namespace ConsoleApplication3
                                     {
                                         int Puntos = Ataque_ju1(atkSelect, def1[objetivoNum - 1], pv1[objetivoNum - 1]);
                                         pv1[objetivoNum - 1] = pv1[objetivoNum - 1] - Puntos;
-                                        totalDano2[GladiadorEleg - 1] = totalDano2[GladiadorEleg - 1] + Puntos;
+                                        totalDaño2[GladiadorEleg - 1] = totalDaño2[GladiadorEleg - 1] + Puntos;
                                         Console.WriteLine("Ataca " + gladiadoresEq2[GladiadorEleg - 1] + " a " + gladiadoresEq1[objetivoNum - 1] + "...");
                                         Console.WriteLine();
                                         Console.WriteLine(gladiadoresEq1[objetivoNum - 1] + " queda con " + pv1[objetivoNum - 1] + " puntos de vida.");
@@ -443,7 +443,7 @@ namespace ConsoleApplication3
                                     {
                                         int Puntos = Ataque_ju1(atkSelect, def2[objetivoNum - 1], pv2[objetivoNum - 1]);
                                         pv2[objetivoNum - 1] = pv2[objetivoNum - 1] - Puntos;
-                                        totalDano1[GladiadorEleg - 1] = totalDano1[GladiadorEleg - 1] + Puntos;
+                                        totalDaño1[GladiadorEleg - 1] = totalDaño1[GladiadorEleg - 1] + Puntos;
                                         Console.WriteLine("Ataca " + gladiadoresEq1[GladiadorEleg - 1] + " a " + gladiadoresEq2[objetivoNum - 1] + "...");
                                         Console.WriteLine();
                                         Console.WriteLine(gladiadoresEq2[objetivoNum - 1] + " queda con " + pv2[objetivoNum - 1] + " puntos de vida.");
@@ -517,14 +517,14 @@ namespace ConsoleApplication3
                 string nombreMVP = "";
                 for (j = 0; j < Modalidad; j++)
                 {
-                    if (totalDano1[j] > MVP)
+                    if (totalDaño1[j] > MVP)
                     {
-                        MVP = totalDano1[j];
+                        MVP = totalDaño1[j];
                         nombreMVP = gladiadoresEq1[j];
                     }
-                    if (totalDano2[j] > MVP)
+                    if (totalDaño2[j] > MVP)
                     {
-                        MVP = totalDano2[j];
+                        MVP = totalDaño2[j];
                         nombreMVP = gladiadoresEq2[j];
                     }
                 }
@@ -550,8 +550,15 @@ namespace ConsoleApplication3
                     {
                         estadogla2 = "fuera de combate";
                     }
-                    Console.WriteLine("Equipo: " + NombreEquipo1 + "     " + "NOMBRE: " + gladiadoresEq1[j] + "     " + "VIDA: " + pv1[j] + "/" + pvmax1[j] + "     " + "ATQ: " + atk1[j] + "     " + "DEF: " + def1[j] + "     " + "DAÑO CAUSADO: " + totalDano1[j] + "     " + "ESTADO: " + estadogla1 + "");
-                    Console.WriteLine("Equipo: " + NombreEquipo2 + "     " + "NOMBRE: " + gladiadoresEq2[j] + "     " + "VIDA: " + pv2[j] + "/" + pvmax2[j] + "     " + "ATQ: " + atk2[j] + "     " + "DEF: " + def2[j] + "     " + "DAÑO CAUSADO: " + totalDano2[j] + "     " + "ESTADO: " + estadogla2 + "");
+                    for (j = 0; j < Modalidad; j++)
+                    {
+                        Console.WriteLine("Equipo: " + NombreEquipo1 + "     " + "NOMBRE: " + gladiadoresEq1[j] + "     " + "VIDA: " + pv1[j] + "/" + pvmax1[j] + "     " + "ATQ: " + atk1[j] + "     " + "DEF: " + def1[j] + "     " + "DAÑO CAUSADO: " + totalDaño1[j] + "     " + "ESTADO: " + estadogla1 + "");
+                    }
+                    for (j = 0; j < Modalidad; j++)
+                    {
+                        Console.WriteLine("Equipo: " + NombreEquipo2 + "     " + "NOMBRE: " + gladiadoresEq2[j] + "     " + "VIDA: " + pv2[j] + "/" + pvmax2[j] + "     " + "ATQ: " + atk2[j] + "     " + "DEF: " + def2[j] + "     " + "DAÑO CAUSADO: " + totalDaño2[j] + "     " + "ESTADO: " + estadogla2 + "");
+
+                    }
                 }
             }
         }
