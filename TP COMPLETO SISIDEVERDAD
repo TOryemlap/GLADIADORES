@@ -55,44 +55,72 @@ namespace ConsoleApplication3
         {
             int Modalidad = ModalidadFun();
 
+            string[] NombreEquipo = new string[2];
             string[] gladiadoresEq1 = new string[Modalidad];
             string[] gladiadoresEq2 = new string[Modalidad];
-
-            Console.WriteLine("Crea el equipo el jugador 1.");
-            Console.Write("Introduzca el nombre de su equipo: ");
-            string NombreEquipo1 = Console.ReadLine();
-
-            for (int i = 0; i < Modalidad; i++)
+            for (int i = 0; i < 2; i++)
             {
-                Console.Write($"Introduzca el nombre del Gladiador {i + 1}: ");
-                gladiadoresEq1[i] = Console.ReadLine();
+                Console.WriteLine("Crea el equipo el jugador 1.");
+                Console.Write("Introduzca el nombre de su equipo: ");
+                NombreEquipo[0] = Console.ReadLine();
+                if (NombreEquipo[0] == "")
+                {
+                    Console.WriteLine("Campo vacio. Introduzca nuevamente un nombre.");
+                }
             }
 
-            Console.WriteLine("Crea el equipo el jugador 2.");
-            Console.Write("Introduzca el nombre de su equipo: ");
-            string NombreEquipo2 = Console.ReadLine();
+            for (int i = 0; i < Modalidad; i++)
+            {
+                if (gladiadoresEq1[i] == "")
+                {
+                    Console.WriteLine("Campo vacio. Introduzca nuevamente un nombre.");
+                }
+                else
+                {
+                    Console.Write($"Introduzca el nombre del Gladiador {i + 1}: ");
+                    gladiadoresEq1[i] = Console.ReadLine();
+                }
+            }
+
+            for (int i = 0; i < 2; i++)
+            {
+                Console.WriteLine("Crea el equipo el jugador 2.");
+                Console.Write("Introduzca el nombre de su equipo: ");
+                NombreEquipo[1] = Console.ReadLine();
+                if (NombreEquipo[1] == "")
+                {
+                    Console.WriteLine("Campo vacio. Introduzca nuevamente un nombre.");
+                }
+            }
 
             for (int i = 0; i < Modalidad; i++)
             {
-                Console.Write($"Introduzca el nombre del Gladiador {i + 1}: ");
-                gladiadoresEq2[i] = Console.ReadLine();
+                if (gladiadoresEq2[i] == "")
+                {
+                    Console.WriteLine("Campo vacio. Introduzca nuevamente un nombre.");
+                }
+                else
+                {
+                    Console.Write($"Introduzca el nombre del Gladiador {i + 1}: ");
+                    gladiadoresEq2[i] = Console.ReadLine();
+                }
             }
 
             int MVP = 0;
             int VidaMaxima = 25;
 
-            int[] pv1 = { 0, 0, 0, 0, 0 };
-            int[] atk1 = { 0, 0, 0, 0, 0 };
-            int[] def1 = { 0, 0, 0, 0, 0 };
-            int[] totalDano1 = { 0, 0, 0, 0, 0 };
-            int[] curas1 = { 0, 0, 0, 0, 0 };
+            int[] pv1 = {0, 0, 0, 0, 0};
+            int[] atk1 = {0, 0, 0, 0, 0};
+            int[] def1 = {0, 0, 0, 0, 0};
+            int[] totalDaño1 = {0, 0, 0, 0, 0};
+            int[] curas1 = {0, 0, 0, 0, 0};
             int[] vidaguardada1 = { 0, 0, 0, 0, 0 };
 
-            int[] pv2 = { 0, 0, 0, 0, 0 };
-            int[] atk2 = { 0, 0, 0, 0, 0 };
-            int[] def2 = { 0, 0, 0, 0, 0 };
-            int[] totalDano2 = { 0, 0, 0, 0, 0 };
-            int[] curas2 = { 0, 0, 0, 0, 0 };
+            int[] pv2 = {0, 0, 0, 0, 0};
+            int[] atk2 = {0, 0, 0, 0, 0};
+            int[] def2 = {0, 0, 0, 0, 0};
+            int[] totalDaño2 = {0, 0, 0, 0, 0};
+            int[] curas2 = {0, 0, 0, 0, 0};
             int[] vidaguardada2 = { 0, 0, 0, 0, 0 };
             int j = 0;
             for (int i = 1; i <= Modalidad; i++)
@@ -113,7 +141,7 @@ namespace ConsoleApplication3
                 do
                 {
                     cont_pts_1 = 40;
-                    Console.WriteLine("Turno del equipo " + NombreEquipo1 + " de distribuir los puntos para " + gladiadoresEq1[j] + "");
+                    Console.WriteLine("Turno del equipo " + NombreEquipo[0] + " de distribuir los puntos para " + gladiadoresEq1[j] + "");
                     Console.WriteLine();
                     Console.Write("ataque: (5 min, 20 max): ");
                     ataque = int.Parse(Console.ReadLine());
@@ -179,7 +207,7 @@ namespace ConsoleApplication3
                 do
                 {
                     cont_pts_2 = 40;
-                    Console.WriteLine("Turno del equipo " + NombreEquipo2 + " de distribuir los puntos para " + gladiadoresEq2[j] + "");
+                    Console.WriteLine("Turno del equipo " + NombreEquipo[1] + " de distribuir los puntos para " + gladiadoresEq2[j] + "");
                     Console.WriteLine();
                     Console.Write("ataque: (5 min, 20 max): ");
                     ataque = int.Parse(Console.ReadLine());
@@ -270,11 +298,11 @@ namespace ConsoleApplication3
                         Console.WriteLine("====================TURNO " + turno + "====================");
                         if (turno % 2 == 0)
                         {
-                            Console.WriteLine("Turno de " + NombreEquipo2);
+                            Console.WriteLine("Turno de " + NombreEquipo[1]);
                         }
                         else
                         {
-                            Console.WriteLine("Turno de " + NombreEquipo1);
+                            Console.WriteLine("Turno de " + NombreEquipo[0]);
                         }
                         while (turnoRealizado == 0)
                         {
@@ -406,7 +434,7 @@ namespace ConsoleApplication3
                                             {
                                                 do
                                                 {
-                                                    Console.WriteLine("¿A quién del equipo rival (" + NombreEquipo1 + ") deseas atacar? ");
+                                                    Console.WriteLine("¿A quién del equipo rival (" + NombreEquipo[0] + ") deseas atacar? ");
                                                     for (j = 0; j < Modalidad; j++)
                                                     {
                                                         Console.WriteLine((j + 1) + ": " + gladiadoresEq1[j] + " - HP = " + pv1[j] + " ");
@@ -423,7 +451,7 @@ namespace ConsoleApplication3
                                             {
                                                 do
                                                 {
-                                                    Console.WriteLine("¿A quién del equipo rival (" + NombreEquipo2 + ") deseas atacar? ");
+                                                    Console.WriteLine("¿A quién del equipo rival (" + NombreEquipo[1] + ") deseas atacar? ");
                                                     for (j = 0; j < Modalidad; j++)
                                                     {
                                                         Console.WriteLine((j + 1) + ": " + gladiadoresEq2[j] + " - HP = " + pv2[j] + " ");
@@ -441,7 +469,7 @@ namespace ConsoleApplication3
                                         {
                                             int Puntos = Ataque_ju1(atkSelect, def1[objetivoNum - 1], pv1[objetivoNum - 1]);
                                             pv1[objetivoNum - 1] = pv1[objetivoNum - 1] - Puntos;
-                                            totalDano2[GladiadorEleg - 1] = totalDano2[GladiadorEleg - 1] + Puntos;
+                                            totalDaño2[GladiadorEleg - 1] = totalDaño2[GladiadorEleg - 1] + Puntos;
                                             Console.WriteLine("Ataca " + gladiadoresEq2[GladiadorEleg - 1] + " a " + gladiadoresEq1[objetivoNum - 1] + "...");
                                             Console.WriteLine();
                                             Console.WriteLine(gladiadoresEq1[objetivoNum - 1] + " queda con " + pv1[objetivoNum - 1] + " puntos de vida.");
@@ -457,7 +485,7 @@ namespace ConsoleApplication3
                                         {
                                             int Puntos = Ataque_ju1(atkSelect, def2[objetivoNum - 1], pv2[objetivoNum - 1]);
                                             pv2[objetivoNum - 1] = pv2[objetivoNum - 1] - Puntos;
-                                            totalDano1[GladiadorEleg - 1] = totalDano1[GladiadorEleg - 1] + Puntos;
+                                            totalDaño1[GladiadorEleg - 1] = totalDaño1[GladiadorEleg - 1] + Puntos;
                                             Console.WriteLine("Ataca " + gladiadoresEq1[GladiadorEleg - 1] + " a " + gladiadoresEq2[objetivoNum - 1] + "...");
                                             Console.WriteLine();
                                             Console.WriteLine(gladiadoresEq2[objetivoNum - 1] + " queda con " + pv2[objetivoNum - 1] + " puntos de vida.");
@@ -522,23 +550,23 @@ namespace ConsoleApplication3
                     Console.WriteLine("====================GAME OVER====================");
                     if (VidaEquipo1 > 0)
                     {
-                        Console.WriteLine("El combate ha acabado... Ganan " + NombreEquipo1);
+                        Console.WriteLine("El combate ha acabado... Ganan " + NombreEquipo[0]);
                     }
                     else
                     {
-                        Console.WriteLine("El combate ha acabado... Ganan " + NombreEquipo2);
+                        Console.WriteLine("El combate ha acabado... Ganan " + NombreEquipo[1]);
                     }
                     string nombreMVP = "";
                     for (j = 0; j < Modalidad; j++)
                     {
-                        if (totalDano1[j] > MVP)
+                        if (totalDaño1[j] > MVP)
                         {
-                            MVP = totalDano1[j];
+                            MVP = totalDaño1[j];
                             nombreMVP = gladiadoresEq1[j];
                         }
-                        if (totalDano2[j] > MVP)
+                        if (totalDaño2[j] > MVP)
                         {
-                            MVP = totalDano2[j];
+                            MVP = totalDaño2[j];
                             nombreMVP = gladiadoresEq2[j];
                         }
                     }
@@ -566,11 +594,11 @@ namespace ConsoleApplication3
                         }
                         for (j = 0; j < Modalidad; j++)
                         {
-                            Console.WriteLine("Equipo: " + NombreEquipo1 + "     " + "NOMBRE: " + gladiadoresEq1[j] + "     " + "VIDA: " + pv1[j] + "/" + pvmax1[j] + "     " + "ATQ: " + atk1[j] + "     " + "DEF: " + def1[j] + "     " + "DAÑO CAUSADO: " + totalDano1[j] + "     " + "ESTADO: " + estadogla1 + "");
+                            Console.WriteLine("Equipo: " + NombreEquipo[0] + "     " + "NOMBRE: " + gladiadoresEq1[j] + "     " + "VIDA: " + pv1[j] + "/" + pvmax1[j] + "     " + "ATQ: " + atk1[j] + "     " + "DEF: " + def1[j] + "     " + "DAÑO CAUSADO: " + totalDaño1[j] + "     " + "ESTADO: " + estadogla1 + "");
                         }
                         for (j = 0; j < Modalidad; j++)
                         {
-                            Console.WriteLine("Equipo: " + NombreEquipo2 + "     " + "NOMBRE: " + gladiadoresEq2[j] + "     " + "VIDA: " + pv2[j] + "/" + pvmax2[j] + "     " + "ATQ: " + atk2[j] + "     " + "DEF: " + def2[j] + "     " + "DAÑO CAUSADO: " + totalDano2[j] + "     " + "ESTADO: " + estadogla2 + "");
+                            Console.WriteLine("Equipo: " + NombreEquipo[1] + "     " + "NOMBRE: " + gladiadoresEq2[j] + "     " + "VIDA: " + pv2[j] + "/" + pvmax2[j] + "     " + "ATQ: " + atk2[j] + "     " + "DEF: " + def2[j] + "     " + "DAÑO CAUSADO: " + totalDaño2[j] + "     " + "ESTADO: " + estadogla2 + "");
 
                         }
                     }
@@ -593,8 +621,8 @@ namespace ConsoleApplication3
                             break;
                         }
                 }
-                
-            }   
+
+            }
         }
     }
 }
